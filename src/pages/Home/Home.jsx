@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import NavigationBar from '../../components/NavigationBar';
+import HeroBanner from '../../components/HeroBanner';
 import Card from '../../components/Card';
 import axios from 'axios';
 
@@ -25,6 +26,7 @@ function Home() {
   return (
     <div>
       <NavigationBar />
+      <HeroBanner />
       <div className='cards flex justify-between px-10 flex-col md:flex-row'>
         {data.map((item, index) => (
           <Card key={index} item={item} />

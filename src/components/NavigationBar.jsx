@@ -12,12 +12,21 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
+// change class on y-scroll
+function handleScroll() {
+  const scrollPosition = window.scrollY;
+  if (scrollPosition > 15) {
+    return true;
+  }
+  return false;
+}
+
 export default function Example() {
   return (
     <Disclosure as='nav' className='bg-primary'>
       {({ open }) => (
         <>
-          <div className='max-w-7xl mx-auto px-2 sm:px-6 lg:px-8'>
+          <div className='mx-auto px-2 sm:px-6 lg:px-8 shadow-lg z-10 fixed w-full bg-primary'>
             <div className='relative flex items-center justify-between h-16'>
               <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
                 {/* Mobile menu button*/}
@@ -30,18 +39,10 @@ export default function Example() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className='flex-1 flex items-center justify-center sm:items-stretch sm:justify-start'>
+              <div className='flex-1 flex justify-center sm:items-stretch sm:justify-start items-center'>
                 <div className='flex-shrink-0 flex items-center'>
-                  <img
-                    className='block lg:hidden h-8 w-auto'
-                    src={logo}
-                    alt='logo'
-                  />
-                  <img
-                    className='hidden lg:block h-8 w-auto'
-                    src={logo}
-                    alt='logo'
-                  />
+                  <img className='block lg:hidden h-8 w-auto' src={logo} alt='logo' />
+                  <img className='hidden lg:block h-8 w-auto' src={logo} alt='logo' />
                   <span className='font-bold text-textColor '>Ride On</span>
                 </div>
                 <div className='hidden sm:block sm:ml-6'>
@@ -51,7 +52,9 @@ export default function Example() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-quinary hover:bg-quinaryDark text-white' : 'text-gray-300 hover:text-white',
+                          item.current
+                            ? 'bg-quinary hover:bg-quinaryDark text-white'
+                            : 'text-gray-300 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
