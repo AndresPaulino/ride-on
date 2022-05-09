@@ -2,9 +2,9 @@ import React from 'react';
 
 function Login() {
   return (
-    <div className='flex flex-wrap w-full bg-primary'>
+    <div className='flex flex-wrap w-full h-screen bg-primary'>
       <div className='flex flex-col w-full md:w-1/2'>
-        <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24'>
+        <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-10'>
           <a href='/' className='p-4 text-xl font-bold text-white bg-quinary'>
             Ride On.
           </a>
