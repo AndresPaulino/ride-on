@@ -1,9 +1,11 @@
+import NavigationBar from './components/NavigationBar';
+
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <div>
+      <NavigationBar />
+      </div>
   );
 }
 
