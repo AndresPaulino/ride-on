@@ -18,7 +18,7 @@ function HeroBanner() {
           <p className='text-xl font-bold text-white'>A place to meet, ride, and share your travels with others.</p>
 
           {/* Hero Buttons */}
-          <div className='flex mt-8 justify-center md:justify-start md:pl-8'>
+          <div className='flex mt-8 justify-center md:justify-start'>
             <button
               className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
                     block px-3 py-2 mr-8 rounded-md font-medium shadow-lg focus:outline-none transition duration-150 ease-in-out'
