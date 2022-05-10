@@ -6,7 +6,7 @@ function Footer() {
       <aside className='hidden lg:relative lg:col-span-2 lg:block'>
         <img
           className='absolute inset-0 object-cover w-full h-full'
-          src='https://images.unsplash.com/photo-1624456735729-03594a40c5fb'
+          src='https://images.pexels.com/photos/1796051/pexels-photo-1796051.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
           alt='Comic Graphic'
         />
       </aside>
