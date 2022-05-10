@@ -117,15 +117,15 @@ export default function Example() {
             </div>
           </div>
 
-          <Disclosure.Panel className='sm:hidden transition '>
-            <div className='px-2 pt-2 pb-3 space-y-1 fixed top-16 bg-primary w-full z-10 shadow-xl'>
+          <Disclosure.Panel className='sm:hidden transition ease-in-out duration-300'>
+            <div className='px-2 pt-2 pb-3 space-y-1 fixed top-16 bg-gray-900 w-full z-10 shadow-xl'>
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as='a'
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-quinary text-white' : 'text-gray-300 hover:text-textColor',
+                    item.current ? 'bg-quinary hover:bg-quinaryDark text-white' : 'text-gray-300 hover:text-textColor',
                     'block px-3 py-2 rounded-md text-base font-medium transition duration-150 ease-in-out'
                   )}
                   aria-current={item.current ? 'page' : undefined}
