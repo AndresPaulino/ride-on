@@ -1,7 +1,33 @@
-import React from 'react';
+import { useState, useRef } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../FirebaseApp';
 import { Link } from 'react-router-dom';
 
 function SignUp() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const usernameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const confirmPasswordRef = useRef(null);
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <section className='flex flex-wrap w-full h-screen bg-gray-900'>
       <div className='flex flex-col w-full md:w-1/2'>
@@ -13,7 +39,7 @@ function SignUp() {
         <div className='flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32'>
           <p className='text-3xl text-center text-textColor md:pt-8'>Welcome.</p>
           {/* Form */}
-          <form className='flex flex-col pt-3 md:pt-8'>
+          <form className='flex flex-col pt-3 md:pt-8' onSubmit={handleRegister}>
             {/* Username */}
             <div className='flex flex-col'>
               <div className='flex relative '>
@@ -25,8 +51,11 @@ function SignUp() {
                 <input
                   type='text'
                   id='username'
+                  onChange={(e) => setUsername(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Username'
+                  ref={usernameRef}
+                  autoComplete='off'
                 />
               </div>
             </div>
@@ -46,9 +75,12 @@ function SignUp() {
                 </span>
                 <input
                   type='text'
-                  id='design-login-email'
+                  id='email'
+                  onChange={(e) => setEmail(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Email'
+                  ref={emailRef}
+                  autoComplete='off'
                 />
               </div>
             </div>
@@ -68,9 +100,11 @@ function SignUp() {
                 </span>
                 <input
                   type='password'
-                  id='design-login-password'
+                  id='password'
+                  onChange={(e) => setPassword(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Password'
+                  ref={passwordRef}
                 />
               </div>
             </div>
@@ -90,9 +124,11 @@ function SignUp() {
                 </span>
                 <input
                   type='password'
-                  id='design-login-password'
+                  id='confirmPassword'
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
-                  placeholder='Password'
+                  placeholder='Confirm Password'
+                  ref={confirmPasswordRef}
                 />
               </div>
             </div>
