@@ -6,9 +6,9 @@ import axios from 'axios';
 
 function Home() {
   const [data, setData] = useState(['Miami', 'California', 'Toronto']);
-    const [loading, setLoading] = useState(true);
-    
-    console.log(data);
+  const [loading, setLoading] = useState(true);
+
+  console.log(data);
 
   // useEffect(() => {
   //     const fetchData = async () => {
@@ -26,12 +26,13 @@ function Home() {
   return (
     <div>
       <NavigationBar />
+
       <HeroBanner />
-      <div className='cards flex justify-between px-10 flex-col md:flex-row'>
-        {data.map((item, index) => (
-          <Card key={index} item={item} />
-        ))}
-      </div>
+        <div className='cards flex justify-between px-10 flex-col md:flex-row'>
+          {data.map((item, index) => (
+            <Card key={index} item={item} />
+          ))}
+        </div>
     </div>
   );
 }
