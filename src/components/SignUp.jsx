@@ -11,12 +11,13 @@ function SignUp() {
 
   // Context
   const usernameRef = useRef();
-  const emailRef = useRef(); 
+  const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  // Signup Function Import
-  const { signup } = useAuth();
+  // import signup from useAuth()
+  const { createUser } = useAuth();
+
 
   // Sign up user
   async function handleSubmit(e) {
@@ -28,7 +29,7 @@ function SignUp() {
     try {
       setError('');
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value);
+      await createUser(emailRef.current.value, passwordRef.current.value, usernameRef.current.value);
     } catch (error) {
       console.log(error);
       setError('Failed to create account');
@@ -51,7 +52,7 @@ function SignUp() {
 
   return (
     <section className='flex flex-wrap w-full h-screen bg-gray-900'>
-      {/* Display error */}
+      {/* Display Toast error */}
       <div className='absolute z-20 text-transparent'>{error && notifyError()}</div>
       <div className='flex flex-col w-full md:w-1/2'>
         <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-10'>
