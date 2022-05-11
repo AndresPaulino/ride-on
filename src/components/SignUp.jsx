@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
-import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
@@ -15,27 +15,47 @@ function SignUp() {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  // import signup from useAuth()
-  const { createUser } = useAuth();
-
-
   // Sign up user
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      return setError('Passwords do not match');
+    // Validate form
+    if (
+      !usernameRef.current.value ||
+      !emailRef.current.value ||
+      !passwordRef.current.value ||
+      !confirmPasswordRef.current.value
+    ) {
+      setError('Please fill in all fields');
+      return;
     }
-    try {
-      setError('');
-      setLoading(true);
-      await createUser(emailRef.current.value, passwordRef.current.value, usernameRef.current.value);
-    } catch (error) {
-      console.log(error);
-      setError('Failed to create account');
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      setError('Passwords do not match');
+      return;
+    }
+    if (passwordRef.current.value.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
     }
 
-    setLoading(false);
+    // Set loading to true to prevent user from submitting form again
+    setLoading(true);
+    setError('');
+
+    // Create user
+    await axios
+      .post('http://localhost:8080/register', {
+        username: usernameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      })
+      .then(() => {
+        notifySuccess();
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   // Error Toast
@@ -44,6 +64,18 @@ function SignUp() {
       position: 'top-center',
       autoClose: 2000,
       hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  // Success Toast
+  const notifySuccess = () =>
+    toast.success('Successfully signed up!', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
