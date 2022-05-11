@@ -107,6 +107,7 @@ function SignUp() {
                 <input
                   type='text'
                   id='username'
+                  name='username'
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Username'
                   ref={usernameRef}
@@ -131,6 +132,7 @@ function SignUp() {
                 <input
                   type='text'
                   id='email'
+                  name='email'
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Email'
                   ref={emailRef}
@@ -155,6 +157,7 @@ function SignUp() {
                 <input
                   type='password'
                   id='password'
+                  name='password'
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Password'
                   ref={passwordRef}
@@ -178,6 +181,7 @@ function SignUp() {
                 <input
                   type='password'
                   id='confirmPassword'
+                  name='confirmPassword'
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Confirm Password'
                   ref={confirmPasswordRef}
