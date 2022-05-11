@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function HeroBanner() {
   return (
@@ -19,18 +20,23 @@ function HeroBanner() {
 
           {/* Hero Buttons */}
           <div className='flex mt-8 justify-center md:justify-start'>
-            <button
-              className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
+            <Link to='/rides'>
+              <button
+                className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
                     block px-3 py-2 mr-8 rounded-md font-medium shadow-lg focus:outline-none transition duration-150 ease-in-out'
-            >
-              Get Started
-            </button>
-            <button
-              className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
+              >
+                Get Started
+              </button>
+            </Link>
+
+            <Link to='/'>
+              <button
+                className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
                     block px-3 py-2 rounded-md font-medium shadow-lg focus:outline-none transition duration-150 ease-in-out'
-            >
-              Learn More
-            </button>
+              >
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
       </div>
