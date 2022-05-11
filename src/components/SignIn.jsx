@@ -1,9 +1,68 @@
-import React from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { axios } from 'axios';
 
 function SignIn() {
+
+  // States
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Context
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  // Auto focus on email input
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
+  // Sign In
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    setLoading(true);
+
+    if (!emailRef.current.value || !passwordRef.current.value) {
+      setError('Please fill in all fields');
+      setLoading(false);
+      return;
+    }
+
+    
+
+    await axios
+      .post('http://localhost:8080/login', {
+        email: emailRef.current.value,
+      })
+      .then((response) => {
+        sessionStorage.setItem('token', response.data.token);
+        this.setState({ success: true });
+      })
+      .catch((error) => {
+        this.setState({ error: error.response.data });
+      });
+    
+    setLoading(false);
+  };
+
+  // Error Toast
+  const notifyError = () =>
+    toast.error(error, {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   return (
     <section className='flex flex-wrap w-full h-screen bg-gray-900'>
+      {/* Display Toast error */}
+      <div className='absolute z-20 text-transparent'>{error && notifyError()}</div>
       <div className='flex flex-col w-full md:w-1/2'>
         <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-10'>
           <a href='/' className='p-4 text-xl font-bold text-white bg-quinary'>
@@ -12,8 +71,7 @@ function SignIn() {
         </div>
         <div className='flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32'>
           <p className='text-3xl text-center text-textColor'>Welcome.</p>
-          <form className='flex flex-col pt-3 md:pt-8'>
-            
+          <form className='flex flex-col pt-3 md:pt-8' onSubmit={handleSubmit}>
             {/* Email */}
             <div className='flex flex-col pt-4'>
               <div className='flex relative '>
@@ -25,6 +83,8 @@ function SignIn() {
                 <input
                   type='text'
                   id='email'
+                  name='email'
+                  ref={emailRef}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Email'
                 />
@@ -41,13 +101,18 @@ function SignIn() {
                 <input
                   type='password'
                   id='password'
+                  name='password'
+                  ref={passwordRef}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Password'
                 />
               </div>
             </div>
             {/* Sign In Button */}
-            <button className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-quinary shadow-md hover:text-black hover:bg-quinaryDark focus:outline-none focus:ring-2'>
+            <button
+              className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-quinary shadow-md hover:text-black hover:bg-quinaryDark focus:outline-none focus:ring-2'
+              disabled={loading}
+            >
               <span className='w-full text-textColor'>Sign In</span>
             </button>
           </form>
@@ -69,6 +134,19 @@ function SignIn() {
           src='https://images.pexels.com/photos/1887195/pexels-photo-1887195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
         />
       </aside>
+
+      {/* Toast Values */}
+      <ToastContainer
+        position='top-center'
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </section>
   );
 }
