@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
@@ -18,6 +18,10 @@ function SignUp() {
   // Sign up user
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // Set loading to true to prevent user from submitting form again
+    setLoading(true);
+    setError('');
 
     // Validate form
     if (
@@ -37,10 +41,6 @@ function SignUp() {
       setError('Password must be at least 6 characters');
       return;
     }
-
-    // Set loading to true to prevent user from submitting form again
-    setLoading(true);
-    setError('');
 
     // Create user
     await axios

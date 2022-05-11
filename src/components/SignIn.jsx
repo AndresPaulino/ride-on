@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import { axios } from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignIn() {
-
   // States
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,6 +23,7 @@ function SignIn() {
     event.preventDefault();
 
     setLoading(true);
+    setError('');
 
     if (!emailRef.current.value || !passwordRef.current.value) {
       setError('Please fill in all fields');
@@ -30,20 +31,21 @@ function SignIn() {
       return;
     }
 
-    
-
     await axios
       .post('http://localhost:8080/login', {
         email: emailRef.current.value,
+        password: passwordRef.current.value,
       })
-      .then((response) => {
-        sessionStorage.setItem('token', response.data.token);
-        this.setState({ success: true });
+      .then(() => {
+        notifySuccess();
+        setTimeout(() => {
+          window.location='/';
+        }, 2000);
       })
       .catch((error) => {
-        this.setState({ error: error.response.data });
+        setError('Invalid email or password');
       });
-    
+
     setLoading(false);
   };
 
@@ -53,6 +55,18 @@ function SignIn() {
       position: 'top-center',
       autoClose: 2000,
       hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  // Success Toast
+  const notifySuccess = () =>
+    toast.success('Successfully signed in!', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
