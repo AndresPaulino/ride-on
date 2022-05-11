@@ -1,3 +1,4 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useContext, useState, useEffect } from 'react';
 import { auth } from '../FirebaseApp';
 
@@ -14,7 +15,7 @@ export function AuthProvider({ children }) {
 
   // Create user function
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
   }
 
     // Set current user

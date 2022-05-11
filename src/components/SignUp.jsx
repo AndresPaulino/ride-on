@@ -30,6 +30,7 @@ function SignUp() {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value);
     } catch (error) {
+      console.log(error);
       setError('Failed to create account');
     }
 
