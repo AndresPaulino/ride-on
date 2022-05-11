@@ -3,9 +3,11 @@ import { auth } from '../FirebaseApp';
 
 const AuthContext = React.createContext();
 
+// Make auth object globally available
 export function useAuth() {
   return useContext(AuthContext);
 }
+
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();

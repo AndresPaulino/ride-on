@@ -1,32 +1,38 @@
 import { useState, useRef } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../FirebaseApp';
+import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
 function SignUp() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // States
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const usernameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const confirmPasswordRef = useRef(null);
+  // Context
+  const usernameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
 
-  const handleRegister = async (e) => {
+  // Signup Function Import
+  const { signup } = useAuth();
+
+  // Sign up user
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return;
+
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return setError('Passwords do not match');
     }
     try {
-      const user = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(user);
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value);
     } catch (error) {
-      console.log(error.message);
+      setError('Failed to create account');
     }
-  };
+
+    setLoading(false);
+  }
 
   return (
     <section className='flex flex-wrap w-full h-screen bg-gray-900'>
@@ -39,7 +45,7 @@ function SignUp() {
         <div className='flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32'>
           <p className='text-3xl text-center text-textColor md:pt-8'>Welcome.</p>
           {/* Form */}
-          <form className='flex flex-col pt-3 md:pt-8' onSubmit={handleRegister}>
+          <form className='flex flex-col pt-3 md:pt-8' onSubmit={handleSubmit}>
             {/* Username */}
             <div className='flex flex-col'>
               <div className='flex relative '>
@@ -133,7 +139,7 @@ function SignUp() {
               </div>
             </div>
             {/* Register Button */}
-            <button className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-quinary shadow-md hover:text-black hover:bg-quinaryDark focus:outline-none focus:ring-2'>
+            <button disabled={loading} className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-quinary shadow-md hover:text-black hover:bg-quinaryDark focus:outline-none focus:ring-2'>
               <span className='w-full text-textColor'>Register</span>
             </button>
           </form>
