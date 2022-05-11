@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
   // States
@@ -9,7 +11,7 @@ function SignUp() {
 
   // Context
   const usernameRef = useRef();
-  const emailRef = useRef();
+  const emailRef = useRef(); 
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
@@ -34,8 +36,22 @@ function SignUp() {
     setLoading(false);
   }
 
+  // Error Toast
+  const notifyError = () =>
+    toast.error(error, {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   return (
     <section className='flex flex-wrap w-full h-screen bg-gray-900'>
+      {/* Display error */}
+      <div className='absolute z-20 text-transparent'>{error && notifyError()}</div>
       <div className='flex flex-col w-full md:w-1/2'>
         <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-10'>
           <a href='/' className='p-4 text-xl font-bold text-white bg-quinary'>
@@ -57,7 +73,6 @@ function SignUp() {
                 <input
                   type='text'
                   id='username'
-                  onChange={(e) => setUsername(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Username'
                   ref={usernameRef}
@@ -82,7 +97,6 @@ function SignUp() {
                 <input
                   type='text'
                   id='email'
-                  onChange={(e) => setEmail(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Email'
                   ref={emailRef}
@@ -107,7 +121,6 @@ function SignUp() {
                 <input
                   type='password'
                   id='password'
-                  onChange={(e) => setPassword(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Password'
                   ref={passwordRef}
@@ -131,7 +144,6 @@ function SignUp() {
                 <input
                   type='password'
                   id='confirmPassword'
-                  onChange={(e) => setConfirmPassword(e.target.value)}
                   className=' flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:secondary focus:border-transparent'
                   placeholder='Confirm Password'
                   ref={confirmPasswordRef}
@@ -139,7 +151,10 @@ function SignUp() {
               </div>
             </div>
             {/* Register Button */}
-            <button disabled={loading} className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-quinary shadow-md hover:text-black hover:bg-quinaryDark focus:outline-none focus:ring-2'>
+            <button
+              disabled={loading}
+              className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-quinary shadow-md hover:text-black hover:bg-quinaryDark focus:outline-none focus:ring-2'
+            >
               <span className='w-full text-textColor'>Register</span>
             </button>
           </form>
@@ -161,6 +176,19 @@ function SignUp() {
           src='https://images.pexels.com/photos/1887195/pexels-photo-1887195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
         />
       </div>
+
+      {/* Toast Values */}
+      <ToastContainer
+        position='top-center'
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </section>
   );
 }
