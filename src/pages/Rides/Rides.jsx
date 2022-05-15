@@ -1,6 +1,7 @@
 import React from 'react';
 import NavigationBar from '../../components/NavigationBar';
 import RidesList from '../../components/RidesList';
+import RidesCard from '../../components/RidesCard';
 
 function Rides() {
   return (
@@ -8,7 +9,8 @@ function Rides() {
       <nav>
         <NavigationBar />
       </nav>
-        <RidesList />
+          <RidesList />
+            <RidesCard />
       
     </section>
   );

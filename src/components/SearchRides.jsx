@@ -2,7 +2,7 @@ import React from 'react';
 
 function SearchRides() {
   return (
-    <div className='py-20'>
+    <div className='pt-20'>
       <div className='flex justify-center w-full'>
         <div className='mb-3 xl:w-96'>
           <div className='input-group relative flex items-stretch w-full mb-4 rounded'>
