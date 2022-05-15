@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import logo from '../assets/images/logos/helmet_logo.png';
+import logo from '../assets/images/logos/Motorcycle.svg';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', current: true },
@@ -30,13 +30,21 @@ export default function Example() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className='flex-1 flex justify-center sm:items-stretch sm:justify-start items-center'>
-                <div className='flex-shrink-0 flex items-center'>
-                  <img className='block lg:hidden h-8 w-auto' src={logo} alt='logo' />
-                  <img className='hidden lg:block h-8 w-auto' src={logo} alt='logo' />
-                  <span className='font-bold text-textColor '>Ride On</span>
+              <div className='flex-1 flex justify-center align-middle sm:items-stretch sm:justify-start items-center'>
+                <div className='flex-shrink-0 flex-col items-center align-middle justify-center'>
+                  <img
+                    className='flex lg:hidden h-10 w-full fill-white align-middle justify-center items-center'
+                    src={logo}
+                    alt='logo'
+                  />
+                  <img
+                    className='hidden lg:flex h-10 w-auto fill-white align-middle justify-center items-center'
+                    src={logo}
+                    alt='logo'
+                  />
+                  <span className='font-bold text-textColor font-dancing flex justify-center'>Ride On</span>
                 </div>
-                <div className='hidden sm:block sm:ml-6'>
+                <div className='hidden sm:flex sm:ml-6 justify-center items-center'>
                   <div className='flex space-x-4'>
                     {navigation.map((item) => (
                       <a

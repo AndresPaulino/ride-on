@@ -6,7 +6,7 @@ function HeroBanner() {
     <section>
       {/* Container */}
       <div
-        className='w-full flex h-screen bg-no-repeat bg-cover bg-center flex-col justify-center items-center'
+        className='w-full flex h-50v bg-no-repeat bg-cover bg-center flex-col justify-center items-center'
         style={{
           backgroundImage: `url('https://images.pexels.com/photos/790076/pexels-photo-790076.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
         }}
