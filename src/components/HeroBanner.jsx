@@ -1,25 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import heroVideo from '../assets/heroVideo.mp4';
 
 function HeroBanner() {
   return (
-    <section>
-      {/* Container */}
-      <div
-        className='w-full flex h-50v bg-no-repeat bg-cover bg-center flex-col justify-center items-center'
-        style={{
-          backgroundImage: `url('https://images.pexels.com/photos/790076/pexels-photo-790076.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
-        }}
-      >
-        {/* Hero Content */}
-        <div className='container mx-auto px-4 py-16'>
-          {/* Hero Heading */}
-          <h1 className='text-3xl font-bold text-white'>Welcome to RideOn</h1>
-          {/* Hero Subheading */}
-          <p className='text-xl font-bold text-white'>A place to meet, ride, and share your travels with others.</p>
+    <section className='flex relative align-middle justify-center items-center -mb-20'>
+      {/* Video */}
+      <div className='-z-10'>
+        <video className='absolute top-0 left-0 w-full h-full object-cover z-50' autoPlay loop muted playsInline>
+          <source src={heroVideo} type='video/mp4' />
+        </video>
+      </div>
 
-          {/* Hero Buttons */}
-          <div className='flex mt-8 justify-center md:justify-start'>
+      {/* Banner Info */}
+      <div className='w-full flex h-70v bg-no-repeat bg-cover bg-center flex-col justify-center items-center align-middle'>
+        {/* Hero Content */}
+        <div className='flex flex-col justify-center items-center'>
+          {/* Hero Title */}
+          <div className='bg-slate-900 bg-opacity-75 py-2 px-4 mb-4 shadow-xl'>
+            <h1 className='text-4xl font-semibold text-textColor'> Welcome to RideOn </h1>
+          </div>
+          <div className='bg-slate-900 bg-opacity-75 py-2 px-4 shadow-xl'>
+            <h1 className='text-md font-semibold text-textColor'> Find your next ride today! </h1>
+          </div>
+          {/* Buttons */}
+          <div className='flex mt-16 justify-center md:justify-start'>
             <Link to='/rides'>
               <button
                 className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
@@ -39,6 +44,11 @@ function HeroBanner() {
             </Link>
           </div>
         </div>
+        {/* <div className='w-full absolute bottom-0 sm:bottom-[-10px] md:bottom-[-20px] lg:bottom-[-30px] xl:bottom-[-50px]'>
+          <svg viewBox='0 0 1440 319'>
+            <path fill='#fff' fill-opacity='1' d='M0,64L720,256L1440,96L1440,320L720,320L0,320Z'></path>
+          </svg>
+        </div> */}
       </div>
     </section>
   );
