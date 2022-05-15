@@ -24,7 +24,7 @@ function HeroBanner() {
             <h1 className='text-md font-semibold text-textColor'> Find your next ride today! </h1>
           </div>
           {/* Buttons */}
-          <div className='flex mt-16 justify-center md:justify-start'>
+          <div className='flex mt-16 justify-center'>
             <Link to='/rides'>
               <button
                 className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark

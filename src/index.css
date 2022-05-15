@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -8,5 +10,5 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background-color: #111827;
 }
-

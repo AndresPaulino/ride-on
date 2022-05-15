@@ -84,7 +84,7 @@ function SignUp() {
     });
 
   return (
-    <section className='flex flex-wrap w-full h-screen bg-gray-900'>
+    <section className='flex flex-wrap w-full h-full bg-gray-900'>
       {/* Display Toast error */}
       <div className='absolute z-20 text-transparent'>{error && notifyError()}</div>
       <div className='flex flex-col w-full md:w-1/2'>

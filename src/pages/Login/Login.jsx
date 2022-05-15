@@ -2,9 +2,9 @@ import SignIn from "../../components/SignIn";
 
 function Login() {
   return (
-      <div>
+      <section>
             <SignIn />
-    </div>
+    </section>
   );
 }
 

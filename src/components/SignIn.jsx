@@ -75,7 +75,7 @@ function SignIn() {
     });
 
   return (
-    <section className='flex flex-wrap w-full h-screen bg-gray-900'>
+    <section className='flex flex-wrap w-full h-full bg-gray-900'>
       {/* Display Toast error */}
       <div className='absolute z-20 text-transparent'>{error && notifyError()}</div>
       <div className='flex flex-col w-full md:w-1/2'>
@@ -134,10 +134,10 @@ function SignIn() {
               <span className='w-full text-textColor'>Sign In</span>
             </button>
           </form>
-          <div className='pt-12 pb-12 text-center'>
-            <p className='text-textColor'>
+          <div className='pt-12 pb-12 text-center flex-col'>
+            <p className='text-textColor block'>
               Don't have an account?
-              <Link to='/register' className='font-semibold underline ml-3 text-quinary hover:text-quinaryDark'>
+              <Link to='/register' className='font-semibold underline ml-3 text-quinary hover:text-quinaryDark block'>
                 Register Here
               </Link>
             </p>
