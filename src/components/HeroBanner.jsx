@@ -4,10 +4,10 @@ import heroVideo from '../assets/heroVideo.mp4';
 
 function HeroBanner() {
   return (
-    <section className='flex relative align-middle justify-center items-center -mb-20'>
+    <section className='flex relative align-middle justify-center items-center -mb-28'>
       {/* Video */}
       <div className='-z-10'>
-        <video className='absolute top-0 left-0 w-full h-full object-cover z-50' autoPlay loop muted playsInline>
+        <video className='absolute -top-5 left-0 w-full h-full object-cover' autoPlay loop muted playsInline>
           <source src={heroVideo} type='video/mp4' />
         </video>
       </div>
@@ -18,10 +18,13 @@ function HeroBanner() {
         <div className='flex flex-col justify-center items-center'>
           {/* Hero Title */}
           <div className='bg-slate-900 bg-opacity-75 py-2 px-4 mb-4 shadow-xl'>
-            <h1 className='text-4xl font-semibold text-textColor'> Welcome to RideOn </h1>
+            <h1 className='text-5xl font-semibold text-textColor font-dancing'>
+              
+              Welcome to <span className='font-dancing text-quinaryDark'>RideOn</span>
+            </h1>
           </div>
           <div className='bg-slate-900 bg-opacity-75 py-2 px-4 shadow-xl'>
-            <h1 className='text-md font-semibold text-textColor'> Find your next ride today! </h1>
+            <h1 className='text-md font-semibold text-textColor'> Find a ride to your next adventure </h1>
           </div>
           {/* Buttons */}
           <div className='flex mt-16 justify-center'>

@@ -42,7 +42,7 @@ export default function Example() {
                     src={logo}
                     alt='logo'
                   />
-                  <span className='font-bold text-textColor font-dancing flex justify-center'>Ride On</span>
+                  <span className='font-bold text-quinaryDark font-dancing flex justify-center'>RideOn</span>
                 </div>
                 <div className='hidden sm:flex sm:ml-6 justify-center items-center'>
                   <div className='flex space-x-4'>
