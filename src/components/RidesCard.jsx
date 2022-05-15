@@ -4,7 +4,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PeopleIcon from '@mui/icons-material/People';
 
 function RidesCard({ ride }) {
-  const { id, profileImg, author, title, date, address, address_2 } = ride;
+  const { profileImg, author, title, date, address, address_2 } = ride;
 
   return (
     <article className='clearfix open mb-5 border-l-4 rounded-b-md border-primary m-4'>

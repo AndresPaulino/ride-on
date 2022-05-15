@@ -1,7 +1,6 @@
 import React from 'react';
 import NavigationBar from '../../components/NavigationBar';
 import RidesList from '../../components/RidesList';
-import RidesCard from '../../components/RidesCard';
 
 function Rides() {
 
