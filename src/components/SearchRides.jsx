@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 
 function SearchRides() {
   return (
@@ -8,19 +9,14 @@ function SearchRides() {
           <div className='input-group relative flex items-stretch w-full mb-4 rounded'>
             <input
               type='search'
-              className='form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-primary focus:outline-none'
+              className='form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded rounded-r-none transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-primary focus:outline-none'
               placeholder='Search'
             />
-            <span
-              className='input-group-text flex items-center p-2 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded'
-              id='basic-addon2'
-            ></span>
             {/* Search Button */}
             <button
-              className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
-                    block px-3 py-2 rounded-md shadow-lg focus:outline-none transition duration-150 ease-in-out'
+              className='relative flex items-center px-2 py-1.5 text-base font-normal text-gray-700 bg-clip-padding border bg-quinary hover:bg-quinaryDark border-solid border-gray-300 rounded rounded-l-none transition ease-in-out duration-150 hover:text-white focus:outline-none focus:shadow-outline focus:border-primary'
             >
-              Search
+              <SearchIcon />
             </button>
           </div>
         </div>

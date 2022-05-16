@@ -10,7 +10,7 @@ function Rides() {
       <nav>
         <NavigationBar />
       </nav>
-          <RidesList />
+      <RidesList />
       
       
     </section>

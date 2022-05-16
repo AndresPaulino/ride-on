@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchRides from './SearchRides';
 import RidesCard from './RidesCard';
 import axios from 'axios';
+import RideModal from './RideModal';
 
 function RidesList() {
   const [rides, setRides] = useState([]);
@@ -23,6 +24,9 @@ function RidesList() {
   return (
     <div className='bg-white'>
       <SearchRides />
+      <div className='flex flex-wrap justify-center'>
+        <RideModal />
+      </div>
       {console.log(rides)}
       <div className='flex-col w-full'>
         {rides.map((ride) => (
