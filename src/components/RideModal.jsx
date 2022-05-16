@@ -22,7 +22,7 @@ export default function RideModal() {
   return (
     <div className='relative'>
       <button
-        className='bg-quinary py-2 px-4 transition-all hover:bg-quinaryDark hover:text-textColor'
+        className='bg-quinary py-2 px-4 transition-all rounded hover:bg-quinaryDark hover:text-textColor'
         onClick={handleOpen}
       >
         Create a Ride

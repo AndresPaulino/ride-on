@@ -37,7 +37,9 @@ function SignIn() {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       })
-      .then(() => {
+      .then((response) => {
+        sessionStorage.setItem('token', response.data.token);
+        console.log(response.data.token);
         notifySuccess();
         setTimeout(() => {
           window.location='/';
@@ -79,8 +81,8 @@ function SignIn() {
       {/* Display Toast error */}
       <div className='absolute z-20 text-transparent'>{error && notifyError()}</div>
       <div className='flex flex-col w-full md:w-1/2'>
-        <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:ml-16 md:-mb-10'>
-          <a href='/' className='py-2 px-4 text-2xl font-bold text-white bg-quinary font-dancing'>
+        <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:ml-16 md:-mb-10 rounded'>
+          <a href='/' className='rounded py-2 px-4 text-2xl font-bold text-textColor bg-quinary font-dancing'>
             RideOn.
           </a>
         </div>
@@ -88,7 +90,8 @@ function SignIn() {
           <img src={logo} alt='logo' className='w-36' />
         </div>
         <div className='flex flex-col justify-center items-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32'>
-          <p className='text-3xl text-center text-textColor'>Welcome</p>
+          <p className='text-3xl text-center text-quinary'>Welcome</p>
+          {/* Form */}
           <form className='flex flex-col pt-3 max-w-xs md:pt-8' onSubmit={handleSubmit}>
             {/* Email */}
             <div className='flex flex-col pt-4'>
