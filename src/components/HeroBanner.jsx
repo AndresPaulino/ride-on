@@ -17,14 +17,26 @@ function HeroBanner() {
         {/* Hero Content */}
         <div className='flex flex-col justify-center items-center'>
           {/* Hero Title */}
-          <div className='bg-slate-900 bg-opacity-75 py-2 px-4 mb-4 shadow-xl'>
-            <h1 className='text-5xl font-semibold text-textColor font-dancing'>
-              
+          <div className='py-2 mb-4 shadow-xl'>
+            <h1
+              className='text-5xl font-semibold text-textColor font-dancing'
+              style={{
+                textShadow: '0px 5px 10px #000',
+              }}
+            >
               Welcome to <span className='font-dancing text-quinaryDark'>RideOn</span>
             </h1>
           </div>
-          <div className='bg-slate-900 bg-opacity-75 py-2 px-4 shadow-xl'>
-            <h1 className='text-md font-semibold text-textColor'> Find a ride to your next adventure </h1>
+          <div className='py-2 px-4 text shadow-xl'>
+            <h1
+              className='text-md font-semibold text-textColor'
+              style={{
+                textShadow: '0px 5px 10px #000',
+              }}
+            >
+              {' '}
+              Find a ride to your next adventure{' '}
+            </h1>
           </div>
           {/* Buttons */}
           <div className='flex mt-16 justify-center'>
