@@ -23,8 +23,8 @@ module.exports = {
         '100v': '100vh',
       },
       fontFamily: {
-        'dancing': ['Dancing Script', 'cursive'],
-        'poppins': ['Poppins', 'sans-serif'],
+        dancing: ['Dancing Script', 'cursive'],
+        poppins: ['Poppins', 'sans-serif'],
       },
     },
   },

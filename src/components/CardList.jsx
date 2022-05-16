@@ -1,10 +1,27 @@
 import Card from './Card';
 
 function CardList() {
-  const blogs = ['What is RideOn?', 'What to expect on your first ride', 'Staying connected']
+  const blogs = [
+    {
+      title: 'What is RideOn?',
+      background:
+        'https://images.pexels.com/photos/1413412/pexels-photo-1413412.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      title: 'Join your first ride',
+      background:
+        'https://images.pexels.com/photos/980382/pexels-photo-980382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      title: 'What to expect',
+      background:
+        'https://images.pexels.com/photos/163789/sky-road-travel-trip-163789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+  ];
+
+  
   return (
-      <section className='py-10 bg-gray-900'>
-          
+    <section className='py-10 bg-gray-900'>
       <div className='cards flex justify-between px-10 flex-col md:flex-row'>
         {blogs.map((blog, index) => (
           <Card key={index} blog={blog} />
