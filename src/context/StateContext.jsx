@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import axios from 'axios';
-import SignIn from './SignUp';
 
-function FetchUser() {
+const Context = createContext();
+
+export const StateContext = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,8 +12,6 @@ function FetchUser() {
   useEffect(() => {
     const fetchData = async () => {
       const token = sessionStorage.getItem('token');
-
-      console.log(token);
 
       if (!token) {
         setFailedAuth(true);
@@ -45,7 +44,7 @@ function FetchUser() {
     return <p>{error.message}</p>;
   }
 
-  return <div className='text-white'>{`${JSON.stringify(user)}`}</div>;
-}
+  return <Context.Provider value={{ user, failedAuth }}>{children}</Context.Provider>;
+};
 
-export default FetchUser;
+export const useStateContext = () => useContext(Context);

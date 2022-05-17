@@ -42,7 +42,7 @@ function SignIn() {
         console.log(response.data.token);
         notifySuccess();
         setTimeout(() => {
-          window.location='/';
+          window.location='/home';
         }, 2000);
       })
       .catch((error) => {

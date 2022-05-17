@@ -4,20 +4,23 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Rides from './pages/Rides/Rides';
 import ModalForm from './components/ModalForm';
-import Profile from './pages/Profile/Profile';
+import Dashboard from './pages/Dashboard/Dashboard';
+import {StateContext} from './context/StateContext';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
-        <Route path='/rides' component={Rides} />
-        <Route path='/modal' component={ModalForm} />
-        <Route path='/dashboard' component={Profile} />
-      </Switch>
-    </Router>
+    <StateContext>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Login} />
+          <Route path='/register' component={Register} />
+          <Route path='/home' component={Home} />
+          <Route path='/rides' component={Rides} />
+          <Route path='/modal' component={ModalForm} />
+          <Route path='/dashboard' component={Dashboard} />
+        </Switch>
+      </Router>
+    </StateContext>
   );
 }
 
