@@ -27,7 +27,6 @@ function RidesList() {
       <div className='flex flex-wrap justify-center'>
         <RideModal />
       </div>
-      {console.log(rides)}
       <div className='flex-col w-full'>
         {rides.map((ride) => (
           <RidesCard key={ride.id} ride={ride} />

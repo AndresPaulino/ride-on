@@ -5,7 +5,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function RidesCard({ ride }) {
-  const { profile_img, author, ride_date, ride_description, ride_from, address1, address2, ride_participants, ride_time, ride_title } = ride;
+  const { profile_img, user_name, ride_date, ride_description, ride_from, address1, address2, ride_participants, ride_time, ride_title } = ride;
 
   return (
     <article className='clearfix open mb-5 border-l-4 rounded-md border-primary m-4'>
@@ -16,10 +16,10 @@ function RidesCard({ ride }) {
             <div className='author-image'>
               <img src={profile_img} alt='profile' className='rounded-full h-12 w-12' />
             </div>
-            <div className='author-name flex justify-center items-center ml-4 font-semibold text-primary'>{author}</div>
+            <div className='author-name flex justify-center items-center ml-4 font-semibold text-primary'>{user_name}</div>
           </div>
           {/* Ride Title */}
-          <div className='ride-title flex justify-center items-center pt-4 max-w-sm'>
+          <div className='ride-title flex justify-start items-left pt-4 w-96 max-w-sm'>
             <h2 className='text-4xl font-semibold'>{ride_title}</h2>
           </div>
           {/* Ride Details */}
@@ -38,7 +38,7 @@ function RidesCard({ ride }) {
               </div>
               <div>
                 <AccessTimeIcon className='text-primary ml-1 mr-2' />
-                <span className=' font-semibold text-primary align-middle'>{ride_time}</span>
+                <span className='font-semibold text-primary align-middle'>{ride_time}</span>
               </div>
             </div>
             {/* Address and Launch Date */}

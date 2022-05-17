@@ -10,31 +10,41 @@ function ModalForm() {
   const dateRef = useRef();
   const timeRef = useRef();
   const descriptionRef = useRef();
-    const fromRef = useRef();
-    
-    const { user_name, profile_img } = user;
+  const fromRef = useRef();
+
+  const { id, user_name, profile_img } = user;
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      
-      const title = titleRef.current.value;
-      const address = addressRef.current.value;
-      const date = dateRef.current.value;
-      const time = timeRef.current.value;
-      const description = descriptionRef.current.value;
-      const from = fromRef.current.value;
-      
-      const data = {
-          title,
-          address,
-          date,
-          time,
-          description,
-          from,
-          user_name,
-          profile_img
-      };
-      
+    e.preventDefault();
+
+    const ride_title = titleRef.current.value;
+    const ride_address = addressRef.current.value;
+    const ride_date = dateRef.current.value;
+    const ride_time = timeRef.current.value;
+    const ride_description = descriptionRef.current.value;
+    const ride_from = fromRef.current.value;
+
+    console.log(ride_date);
+
+    const data = {
+      id,
+      user_name,
+      profile_img,
+      ride_title,
+      ride_address,
+      ride_date,
+      ride_time,
+      ride_description,
+      ride_from,
+    };
+
+    axios.post('http://localhost:8080/rides', data).then((res) => {
+      console.log(res);
+    }
+    ).catch((err) => {
+      console.log(err);
+    }
+    );
   };
   return (
     <div className='p-4 max-w-lg mx-auto bg-gray-900 shadow-2xl'>
@@ -45,7 +55,13 @@ function ModalForm() {
         {/* Title Input */}
         <div>
           <label className='text-white mb-2'>Title</label>
-          <input className='w-full bg-white p-2 rounded-lg' type='text' placeholder='Title' name='ride_title' ref={titleRef} />
+          <input
+            className='w-full bg-white p-2 rounded-lg'
+            type='text'
+            placeholder='Title'
+            name='ride_title'
+            ref={titleRef}
+          />
         </div>
         {/* Ride From Input */}
         {/* Date Input */}
@@ -76,12 +92,17 @@ function ModalForm() {
         {/* Address */}
         <div>
           <label className='text-white mb-2'>Address</label>
-          <input className='w-full bg-white p-2 rounded-lg' type={'address'} placeholder='Address' ref={addressRef}/>
+          <input className='w-full bg-white p-2 rounded-lg' type={'address'} placeholder='Address' ref={addressRef} />
         </div>
         {/* Description */}
         <div className='flex-col justify-start align-top items-start my-4'>
           <label className='text-white mb-2'>Description</label>
-          <input className='w-full h-36 bg-white p-2 rounded-lg' type={'description'} placeholder='Description' ref={descriptionRef} />
+          <input
+            className='w-full h-36 bg-white p-2 rounded-lg'
+            type={'description'}
+            placeholder='Description'
+            ref={descriptionRef}
+          />
         </div>
         {/* Buttons */}
         <div className='flex justify-between my-4'>

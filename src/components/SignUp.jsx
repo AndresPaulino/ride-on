@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import logo from '../assets/images/logos/Motorcycle.svg'
+import logo from '../assets/images/logos/Motorcycle.svg';
 
 function SignUp() {
   // States
@@ -32,14 +32,20 @@ function SignUp() {
       !confirmPasswordRef.current.value
     ) {
       setError('Please fill in all fields');
+      setLoading(false);
+
       return;
     }
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       setError('Passwords do not match');
+      setLoading(false);
+
       return;
     }
     if (passwordRef.current.value.length < 6) {
       setError('Password must be at least 6 characters');
+      setLoading(false);
+
       return;
     }
 
@@ -53,9 +59,14 @@ function SignUp() {
       .then(() => {
         notifySuccess();
         e.target.reset();
+        console.log(error);
+        setTimeout(() => {
+          window.location = '/login';
+        }, 2000);
       })
       .catch((error) => {
-        console.log(error);
+        setError('An error occurred, please try again');
+        setLoading(false);
       });
   }
 
@@ -93,8 +104,8 @@ function SignUp() {
             RideOn.
           </a>
         </div>
-        <div className="flex justify-center items-center align-middle pt-14 md:w-10 md:absolute md:ml-16 ">
-          <img src={logo} alt="logo" className="w-36" />
+        <div className='flex justify-center items-center align-middle pt-14 md:w-10 md:absolute md:ml-16 '>
+          <img src={logo} alt='logo' className='w-36' />
         </div>
         <div className='flex flex-col justify-center items-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32'>
           <p className='text-3xl text-center text-textColor md:pt-8'>Welcome</p>
