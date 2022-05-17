@@ -30,7 +30,7 @@ export default function RideModal() {
       {open && (
         <Modal open={open} onClose={handleOpen}>
         <Box sx={style}>
-          <ModalForm />
+            <ModalForm onClose={handleOpen}/>
           </Box>
         </Modal>
       )}

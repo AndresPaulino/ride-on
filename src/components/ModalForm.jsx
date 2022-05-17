@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useStateContext } from '../context/StateContext';
 import axios from 'axios';
 
-function ModalForm() {
-  const { user, failedAuth } = useStateContext();
+function ModalForm({ onClose }) {
+  const { user } = useStateContext();
+  const [startDate, setStartDate] = useState(new Date());
 
   const titleRef = useRef();
   const addressRef = useRef();
@@ -14,7 +15,7 @@ function ModalForm() {
 
   const { id, user_name, profile_img } = user;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const ride_title = titleRef.current.value;
@@ -24,7 +25,11 @@ function ModalForm() {
     const ride_description = descriptionRef.current.value;
     const ride_from = fromRef.current.value;
 
-    console.log(ride_date);
+    // Form Validation
+    if (!ride_title || !ride_address || !ride_date || !ride_time || !ride_description || !ride_from) {
+      alert('Please fill out all fields');
+      return;
+    }
 
     const data = {
       id,
@@ -38,13 +43,15 @@ function ModalForm() {
       ride_from,
     };
 
-    axios.post('http://localhost:8080/rides', data).then((res) => {
-      console.log(res);
-    }
-    ).catch((err) => {
-      console.log(err);
-    }
-    );
+    await axios
+      .post('http://localhost:8080/rides', data)
+      .then((res) => {
+        onClose();
+        window.location='/rides';
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className='p-4 max-w-lg mx-auto bg-gray-900 shadow-2xl'>
@@ -81,7 +88,7 @@ function ModalForm() {
           {/* Date */}
           <div className='flex-col my-4 max-w-[10rem]'>
             <label className='text-white mb-0 block'>Date</label>
-            <input className='w-full bg-white p-2 rounded-lg' type={'date'} placeholder='Date' ref={dateRef} />
+            <input className='w-full bg-white p-2 rounded-lg' type={'date'} placeholder='Date' onChange={setStartDate} ref={dateRef} />
           </div>
           {/* Time */}
           <div className='max-w-[8rem] my-4'>
@@ -106,7 +113,10 @@ function ModalForm() {
         </div>
         {/* Buttons */}
         <div className='flex justify-between my-4'>
-          <button className='w-full mr-2 bg-quinary hover:bg-quinaryDark hover:text-textColor p-2 rounded-lg'>
+          <button
+            className='w-full mr-2 bg-quinary hover:bg-quinaryDark hover:text-textColor p-2 rounded-lg'
+            onClick={onClose}
+          >
             Cancel
           </button>
           <button className='w-full ml-2  bg-quinary hover:bg-quinaryDark hover:text-textColor p-2 rounded-lg'>

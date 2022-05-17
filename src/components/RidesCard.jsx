@@ -5,7 +5,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function RidesCard({ ride }) {
-  const { profile_img, user_name, ride_date, ride_description, ride_from, address1, address2, ride_participants, ride_time, ride_title } = ride;
+  const { profile_img, user_name, ride_date, address1, address2, ride_participants, ride_time, ride_title } = ride;
 
   return (
     <article className='clearfix open mb-5 border-l-4 rounded-md border-primary m-4'>

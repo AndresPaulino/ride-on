@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import logo from '../assets/images/logos/Motorcycle.svg';
+import { useStateContext } from '../context/StateContext';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', current: false },
@@ -18,6 +19,8 @@ function classNames(...classes) {
 }
 
 export default function Example({ userName }) {
+  const { user } = useStateContext();
+
   return (
     <Disclosure as='nav' className='bg-gray-900'>
       {({ open }) => (
@@ -41,11 +44,13 @@ export default function Example({ userName }) {
                     className='flex lg:hidden h-10 w-full fill-white align-middle justify-center items-center'
                     src={logo}
                     alt='logo'
+                    onClick={() => (window.location = '/')}
                   />
                   <img
                     className='hidden lg:flex h-10 w-auto fill-white align-middle justify-center items-center'
                     src={logo}
                     alt='logo'
+                    onClick={() => (window.location = '/')}
                   />
                   <span className='font-bold text-quinaryDark font-dancing flex justify-center'>RideOn</span>
                 </div>
@@ -76,11 +81,7 @@ export default function Example({ userName }) {
                   <div>
                     <Menu.Button className='bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>
                       {/* Profile picture */}
-                      <img
-                        className='h-8 w-8 rounded-full'
-                        src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                        alt='profile'
-                      />
+                      <img className='h-8 w-8 rounded-full' src={user.profile_img} alt='profile' />
                     </Menu.Button>
                   </div>
                   <Transition
