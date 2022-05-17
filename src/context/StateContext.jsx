@@ -15,7 +15,7 @@ export const StateContext = ({ children }) => {
 
       if (!token) {
         setFailedAuth(true);
-        return (window.location = '/');
+        window.location = '/';
       }
 
       await axios

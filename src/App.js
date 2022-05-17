@@ -5,22 +5,22 @@ import Register from './pages/Register/Register';
 import Rides from './pages/Rides/Rides';
 import ModalForm from './components/ModalForm';
 import Dashboard from './pages/Dashboard/Dashboard';
-import {StateContext} from './context/StateContext';
+import { StateContext } from './context/StateContext';
 
 function App() {
   return (
-    <StateContext>
-      <Router>
-        <Switch>
-          <Route exact path='/' component={Login} />
-          <Route path='/register' component={Register} />
+    <Router>
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <Route path='/register' component={Register} />
+        <StateContext>
           <Route path='/home' component={Home} />
           <Route path='/rides' component={Rides} />
           <Route path='/modal' component={ModalForm} />
           <Route path='/dashboard' component={Dashboard} />
-        </Switch>
-      </Router>
-    </StateContext>
+        </StateContext>
+      </Switch>
+    </Router>
   );
 }
 

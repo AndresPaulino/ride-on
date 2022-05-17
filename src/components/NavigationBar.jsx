@@ -4,15 +4,20 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import logo from '../assets/images/logos/Motorcycle.svg';
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', current: true },
-  { name: 'Find Your Next Ride', href: '/login', current: false },
+  { name: 'Dashboard', href: '/dashboard', current: false },
+  { name: 'Find Your Next Ride', href: '/rides', current: false },
 ];
+
+const handleLogout = () => {
+  sessionStorage.removeItem('token');
+  window.location = '/';
+}
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+export default function Example({ userName }) {
   return (
     <Disclosure as='nav' className='bg-gray-900'>
       {({ open }) => (
@@ -66,10 +71,10 @@ export default function Example() {
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
                 {/* Profile dropdown */}
+                <div className='text-textColor text-bold'>Welcome, {userName}</div>
                 <Menu as='div' className='ml-3 relative z-50'>
                   <div>
                     <Menu.Button className='bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>
-                      <span className='sr-only'>Open user menu</span>
                       {/* Profile picture */}
                       <img
                         className='h-8 w-8 rounded-full'
@@ -112,6 +117,7 @@ export default function Example() {
                         {({ active }) => (
                           <a
                             href='/'
+                            onClick={handleLogout}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out
