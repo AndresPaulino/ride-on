@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import SearchRides from './SearchRides';
 import RidesCard from './RidesCard';
-import axios from 'axios';
 import RideModal from './RideModal';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function RidesList() {
   const [rides, setRides] = useState([]);
@@ -13,6 +14,7 @@ function RidesList() {
         .get('http://localhost:8080/rides')
         .then((res) => {
           setRides(res.data);
+          console.log(res.data)
         })
         .catch((err) => {
           console.log(err);
@@ -29,7 +31,9 @@ function RidesList() {
       </div>
       <div className='flex-col w-full'>
         {rides.map((ride) => (
-          <RidesCard key={ride.id} ride={ride} />
+          <Link to={`/rides/${ride.id}`} key={ride.id}>
+            <RidesCard ride={ride} />
+          </Link>
         ))}
       </div>
     </div>

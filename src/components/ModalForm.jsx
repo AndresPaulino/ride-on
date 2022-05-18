@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useStateContext } from '../context/StateContext';
 import axios from 'axios';
 
@@ -44,7 +44,7 @@ function ModalForm({ onClose }) {
 
     await axios
       .post('http://localhost:8080/rides', data)
-      .then((res) => {
+      .then(() => {
         onClose();
         window.location='/rides';
       })

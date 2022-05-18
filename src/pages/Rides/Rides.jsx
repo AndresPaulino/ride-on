@@ -7,7 +7,7 @@ function Rides() {
 
   return (
     <section>
-      <nav>
+      <nav className='z-50'>
         <NavigationBar />
       </nav>
       <RidesList />
