@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import logo from '../assets/images/logos/Motorcycle.svg';
 import { useStateContext } from '../context/StateContext';
+import logo from '../assets/images/logos/Motorcycle.svg';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', current: false },
@@ -18,7 +18,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example({ userName }) {
+export default function Example() {
   const { user } = useStateContext();
 
   return (
@@ -41,16 +41,16 @@ export default function Example({ userName }) {
               <div className='flex-1 flex justify-center align-middle sm:items-stretch sm:justify-start items-center'>
                 <div className='flex-shrink-0 flex-col items-center align-middle justify-center'>
                   <img
-                    className='flex lg:hidden h-10 w-full fill-white align-middle justify-center items-center'
+                    className='flex lg:hidden h-10 w-full fill-white align-middle justify-center items-center cursor-pointer'
                     src={logo}
                     alt='logo'
-                    onClick={() => (window.location = '/')}
+                    onClick={() => (window.location = '/home')}
                   />
                   <img
-                    className='hidden lg:flex h-10 w-auto fill-white align-middle justify-center items-center'
+                    className='hidden lg:flex h-10 w-auto fill-white align-middle justify-center items-center cursor-pointer'
                     src={logo}
                     alt='logo'
-                    onClick={() => (window.location = '/')}
+                    onClick={() => (window.location = '/home')}
                   />
                   <span className='font-bold text-quinaryDark font-dancing flex justify-center'>RideOn</span>
                 </div>
@@ -76,7 +76,7 @@ export default function Example({ userName }) {
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
                 {/* Profile dropdown */}
-                <div className='text-textColor text-bold'>Welcome, {userName}</div>
+                <div className='text-textColor text-bold'>{user.user_name}</div>
                 <Menu as='div' className='ml-3 relative z-50'>
                   <div>
                     <Menu.Button className='bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>

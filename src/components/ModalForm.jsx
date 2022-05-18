@@ -4,7 +4,6 @@ import axios from 'axios';
 
 function ModalForm({ onClose }) {
   const { user } = useStateContext();
-  const [startDate, setStartDate] = useState(new Date());
 
   const titleRef = useRef();
   const addressRef = useRef();
@@ -88,7 +87,7 @@ function ModalForm({ onClose }) {
           {/* Date */}
           <div className='flex-col my-4 max-w-[10rem]'>
             <label className='text-white mb-0 block'>Date</label>
-            <input className='w-full bg-white p-2 rounded-lg' type={'date'} placeholder='Date' onChange={setStartDate} ref={dateRef} />
+            <input className='w-full bg-white p-2 rounded-lg' type={'date'} placeholder='Date' ref={dateRef} />
           </div>
           {/* Time */}
           <div className='max-w-[8rem] my-4'>
