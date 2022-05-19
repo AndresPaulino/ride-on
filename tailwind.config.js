@@ -26,6 +26,10 @@ module.exports = {
         dancing: ['Dancing Script', 'cursive'],
         poppins: ['Poppins', 'sans-serif'],
       },
+      dropShadow: {
+        'right': '0 10px 35px rgba(0, 0, 0, 0.25)',
+        'bottom': ['0 0 15px rgba(0, 0, 0, 0.50)', '0 0 15px rgba(0, 0, 0, 0.50)'],
+      },
     },
   },
 };

@@ -52,15 +52,14 @@ function SideNav() {
       {/* Side Nav */}
       <div
         onChange={handleOpen()} // always display side nav on tablet + desktop
-        className={`absolute transition-all ease-in delay-200 sm:block ${open ? 'left-0' : '-left-[15rem]'}`}
+        className={`absolute transition-all ease-in delay-200 sm:block border-r-2 drop-shadow-right ${open ? 'left-0' : '-left-[15rem]'}`}
       >
-        <div className='container flex-col justify-center items-center align-middle max-w-[15rem] py-10 bg-white h-[50rem]'>
+        <div className='container flex-col justify-center items-center align-middle max-w-[15rem] py-10 bg-white h-screen'>
           {/* Profile Picture */}
           <div className='flex items-center justify-center p-3'>
             <img className='w-10 rounded-full' src={user.profile_img} alt='profile' />
             <div className='p-3'>
               <h3 className='text-2xl font-bold text-primary'>{user.user_name}</h3>
-              <p className='text-sm'>@johndoe</p>
             </div>
           </div>
           {/* Navbar */}

@@ -15,7 +15,9 @@ function RidesCard({ ride }) {
       participants: ride_participants,
     };
 
-    await axios.post('http://localhost:8080/rides/add-participants', data).catch((err) => {
+    await axios.post('http://localhost:8080/rides/add-participants', data)
+      .then(res => window.location='/rides')
+      .catch((err) => {
       console.log(err);
     });
   };
