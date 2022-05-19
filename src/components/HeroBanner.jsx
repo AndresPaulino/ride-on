@@ -13,7 +13,7 @@ function HeroBanner() {
       </div>
 
       {/* Banner Info */}
-      <div className='w-full flex h-70v bg-no-repeat bg-cover bg-center flex-col justify-center items-center align-middle'>
+      <div className='w-full flex h-[40rem] bg-no-repeat bg-cover bg-center flex-col justify-center items-center align-middle'>
         {/* Hero Content */}
         <div className='flex flex-col justify-center items-center'>
           {/* Hero Title */}
@@ -43,7 +43,7 @@ function HeroBanner() {
             <Link to='/rides'>
               <button
                 className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
-                    block px-3 py-2 mr-8 rounded-md font-medium shadow-lg focus:outline-none transition duration-150 ease-in-out'
+                    block px-3 py-2 mr-8 rounded-md font-medium shadow-xl focus:outline-none transition duration-150 ease-in-out'
               >
                 Get Started
               </button>
@@ -52,18 +52,13 @@ function HeroBanner() {
             <Link to='/'>
               <button
                 className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
-                    block px-3 py-2 rounded-md font-medium shadow-lg focus:outline-none transition duration-150 ease-in-out'
+                    block px-3 py-2 rounded-md font-medium shadow-xl focus:outline-none transition duration-150 ease-in-out'
               >
                 Learn More
               </button>
             </Link>
           </div>
         </div>
-        {/* <div className='w-full absolute bottom-0 sm:bottom-[-10px] md:bottom-[-20px] lg:bottom-[-30px] xl:bottom-[-50px]'>
-          <svg viewBox='0 0 1440 319'>
-            <path fill='#fff' fill-opacity='1' d='M0,64L720,256L1440,96L1440,320L720,320L0,320Z'></path>
-          </svg>
-        </div> */}
       </div>
     </section>
   );
