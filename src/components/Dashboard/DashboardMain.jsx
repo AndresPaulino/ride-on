@@ -8,10 +8,10 @@ function DashboardMain() {
   const background = '../../assets/images/orange_bg.jpg';
 
   return (
-    <main className='bg-gray-800 w-full h-screen'>
+    <main className='bg-gray-800 w-full h-screen sm:pl-[10rem]'>
       {/* Logo */}
-      <div className='flex flex-col w-full md:w-1/2'>
-        <div className='flex justify-center pt-12 md:justify-start md:pl-12 md:ml-16 md:-mb-10 rounded'>
+      <div className='flex flex-col w-full sm:justify-start sm:items-start sm:pl-[3.5rem]'>
+        <div className='flex justify-center pt-12 rounded'>
           <a
             href='/home'
             className='rounded py-2 px-4 text-2xl font-bold text-primary drop-shadow-all bg-quinary font-dancing'

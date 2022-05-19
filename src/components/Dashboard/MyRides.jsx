@@ -20,7 +20,7 @@ function MyRides() {
           </NavLink>
           <NavLink
             to='/dashboard'
-            className={`mr-3 pb-1 border-quinary ${!active ? 'border-b-2' : ''}`}
+            className={`mr-3 pb-1 border-quinary text-primary ${!active ? 'border-b-2' : ''}`}
             onClick={() => setActive(false)}
           >
             Past Rides

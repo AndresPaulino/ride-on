@@ -35,7 +35,7 @@ function SideNav() {
     <>
       {/* Close Icon */}
       <div
-        className={`sm:hidden p-3 ml-2 text-primary cursor-pointer absolute z-20 transition-all ease-in delay-200 ${
+        className={`sm:hidden p-3 ml-2 text-gray-400 cursor-pointer absolute z-20 transition-all ease-in delay-200 ${
           open ? 'opacity-100' : 'opacity-0'
         }`}
       >
@@ -43,7 +43,7 @@ function SideNav() {
       </div>
       {/* Menu Icon */}
       <div
-        className={`sm:hidden p-3 ml-2 text-primary cursor-pointer absolute z-20 transition-all ease-in delay-200 ${
+        className={`sm:hidden p-3 ml-2 text-gray-400 cursor-pointer absolute z-20 transition-all ease-in delay-200 ${
           open ? 'opacity-0' : 'opacity-100'
         }`}
       >
