@@ -1,5 +1,3 @@
-import { useStateContext } from '../context/StateContext';
-
 function AddParticipant({ increment }) {
 
   return (

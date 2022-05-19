@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import axios from 'axios';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PeopleIcon from '@mui/icons-material/People';

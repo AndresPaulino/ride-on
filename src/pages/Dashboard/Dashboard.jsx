@@ -1,9 +1,11 @@
 import React from 'react'
+import NavigationBar from '../../components/NavigationBar'
+import SideNav from '../../components/Dashboard/SideNav'
 
 function Dashboard() {
   return (
-      <div>
-        <h1>Dashboard</h1>
+    <div>
+        <SideNav />
     </div>
   )
 }
