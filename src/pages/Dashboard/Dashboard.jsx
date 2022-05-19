@@ -1,11 +1,12 @@
-import React from 'react'
-import NavigationBar from '../../components/NavigationBar'
-import SideNav from '../../components/Dashboard/SideNav'
+import React from 'react';
+import DashboardMain from '../../components/Dashboard/DashboardMain';
+import SideNav from '../../components/Dashboard/SideNav';
 
 function Dashboard() {
   return (
     <div>
-        <SideNav />
+      <SideNav />
+      <DashboardMain />
     </div>
   )
 }
