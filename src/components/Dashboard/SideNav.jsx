@@ -35,7 +35,7 @@ function SideNav() {
     <>
       {/* Close Icon */}
       <div
-        className={`sm:hidden p-3 ml-2 text-primary cursor-pointer absolute z-10 transition-all ease-in delay-200 ${
+        className={`sm:hidden p-3 ml-2 text-primary cursor-pointer absolute z-20 transition-all ease-in delay-200 ${
           open ? 'opacity-100' : 'opacity-0'
         }`}
       >
@@ -43,7 +43,7 @@ function SideNav() {
       </div>
       {/* Menu Icon */}
       <div
-        className={`sm:hidden p-3 ml-2 text-primary cursor-pointer absolute z-10 transition-all ease-in delay-200 ${
+        className={`sm:hidden p-3 ml-2 text-primary cursor-pointer absolute z-20 transition-all ease-in delay-200 ${
           open ? 'opacity-0' : 'opacity-100'
         }`}
       >
@@ -52,7 +52,7 @@ function SideNav() {
       {/* Side Nav */}
       <div
         onChange={handleOpen()} // always display side nav on tablet + desktop
-        className={`absolute transition-all ease-in delay-200 sm:block border-r-2 drop-shadow-right ${open ? 'left-0' : '-left-[15rem]'}`}
+        className={`z-10 absolute transition-all ease-in delay-200 sm:block border-r-2 drop-shadow-right ${open ? 'left-0' : '-left-[15rem]'}`}
       >
         <div className='container flex-col justify-center items-center align-middle max-w-[15rem] py-10 bg-white h-screen'>
           {/* Profile Picture */}
@@ -64,28 +64,28 @@ function SideNav() {
           </div>
           {/* Navbar */}
           <div className='flex flex-col p-3 ml-2'>
-            <h2 className='px-1'>Menu</h2>
+            <h2 className='px-1 text-primary border-quinary border-b-2 w-fit font-semibold'>Menu</h2>
             <div className='my-5'>
-              <div className='py-4 hover:border-r-4 cursor-pointer border-primary text-gray-600 hover:text-gray-900 hover:font-semibold'>
+              <div className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'>
                 <a href='/home' className='text-sm '>
                   <HomeIcon className='ml-2' />
-                  <span className='ml-3'>Home</span>
+                  <span className='ml-3 text-primary hover:text-primary'>Home</span>
                 </a>
               </div>
-              <div className='py-4 hover:border-r-4 cursor-pointer border-primary text-gray-600 hover:text-gray-900 hover:font-semibold'>
+              <div className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'>
                 <a href='/' className='text-sm '>
                   <TwoWheelerIcon className='ml-2' />
                   <span className='ml-3'>My Rides</span>
                 </a>
               </div>
-              <div className='py-4 hover:border-r-4 cursor-pointer border-primary text-gray-600 hover:text-gray-900 hover:font-semibold'>
+              <div className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'>
                 <a href='/' className='text-sm '>
                   <SettingsIcon className='ml-2' />
                   <span className='ml-3'>Settings</span>
                 </a>
               </div>
               <div
-                className='py-4 hover:border-r-4 cursor-pointer border-primary text-gray-600 hover:text-gray-900 hover:font-semibold'
+                className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'
                 onClick={logout}
               >
                 <a href='/' className='text-sm '>

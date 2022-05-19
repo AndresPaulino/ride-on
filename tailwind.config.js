@@ -27,8 +27,9 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif'],
       },
       dropShadow: {
-        'right': '0 10px 35px rgba(0, 0, 0, 0.25)',
-        'bottom': ['0 0 15px rgba(0, 0, 0, 0.50)', '0 0 15px rgba(0, 0, 0, 0.50)'],
+        right: '0 10px 35px rgba(0, 0, 0, 0.25)',
+        all: '10px 10px 10px rgba(0, 0, 0, 0.45)',
+        bottom: ['0 0 15px rgba(0, 0, 0, 0.50)', '0 0 15px rgba(0, 0, 0, 0.50)'],
       },
     },
   },
