@@ -22,10 +22,10 @@ export default function Example() {
   const { user } = useStateContext();
 
   return (
-    <Disclosure as='nav' className='bg-gray-900 drop-shadow-all'>
+    <Disclosure as='nav' className='bg-gray-900'>
       {({ open }) => (
         <>
-          <div className='mx-auto px-2 sm:px-6 lg:px-8 shadow-lg z-10 w-full bg-gray-900 fixed'>
+          <div className='mx-auto px-2 sm:px-6 lg:px-8 shadow-lg z-10 w-full bg-gray-900 fixed  drop-shadow-xl'>
             <div className='relative flex items-center justify-between h-16'>
               <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
                 {/* Mobile menu button*/}
