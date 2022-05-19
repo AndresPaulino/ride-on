@@ -43,7 +43,7 @@ function HeroBanner() {
             <Link to='/rides'>
               <button
                 className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
-                    block px-3 py-2 mr-8 rounded-md font-medium shadow-xl focus:outline-none transition duration-150 ease-in-out'
+                    block px-3 py-2 mr-8 rounded-md font-medium shadow-xl focus:outline-none transition duration-150 ease-in-out drop-shadow-all'
               >
                 Get Started
               </button>
@@ -52,7 +52,7 @@ function HeroBanner() {
             <Link to='/'>
               <button
                 className='bg-quinary text-whit hover:text-textColor hover:bg-quinaryDark
-                    block px-3 py-2 rounded-md font-medium shadow-xl focus:outline-none transition duration-150 ease-in-out'
+                    block px-3 py-2 rounded-md font-medium shadow-xl focus:outline-none transition duration-150 ease-in-out drop-shadow-all'
               >
                 Learn More
               </button>

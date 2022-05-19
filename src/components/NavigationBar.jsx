@@ -22,7 +22,7 @@ export default function Example() {
   const { user } = useStateContext();
 
   return (
-    <Disclosure as='nav' className='bg-gray-900'>
+    <Disclosure as='nav' className='bg-gray-900 drop-shadow-all'>
       {({ open }) => (
         <>
           <div className='mx-auto px-2 sm:px-6 lg:px-8 shadow-lg z-10 w-full bg-gray-900 fixed'>
