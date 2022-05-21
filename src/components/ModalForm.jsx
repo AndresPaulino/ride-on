@@ -4,7 +4,8 @@ import axios from 'axios';
 
 function ModalForm({ onClose }) {
   const { user } = useStateContext();
-
+  const { id, user_name, profile_img } = user;
+  
   const titleRef = useRef();
   const addressRef = useRef();
   const dateRef = useRef();
@@ -12,14 +13,27 @@ function ModalForm({ onClose }) {
   const descriptionRef = useRef();
   const fromRef = useRef();
 
-  const { id, user_name, profile_img } = user;
+  // convert date to ISO format
+  const convertDate = (date) => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const dateArray = date.split('-');
+    const year = dateArray[0];
+    const month = dateArray[1];
+    const day = dateArray[2];
+    const monthName = months[month - 1];
+    const newDate = `${monthName} ${day}, ${year}`;
+    return newDate;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // let seconds = new Date(dateRef.current.value).getTime() / 1000;
+    // let date = new Date(0).setUTCSeconds(seconds);
+
     const ride_title = titleRef.current.value;
     const ride_address = addressRef.current.value;
-    const ride_date = dateRef.current.value;
+    const ride_date = convertDate(dateRef.current.value);
     const ride_time = timeRef.current.value;
     const ride_description = descriptionRef.current.value;
     const ride_from = fromRef.current.value;
@@ -46,7 +60,7 @@ function ModalForm({ onClose }) {
       .post('http://localhost:8080/rides', data)
       .then(() => {
         onClose();
-        window.location='/rides';
+        window.location = '/rides';
       })
       .catch((err) => {
         console.log(err);

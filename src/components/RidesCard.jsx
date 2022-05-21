@@ -3,23 +3,39 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PeopleIcon from '@mui/icons-material/People';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddParticipant from './AddParticipant';
+import { useStateContext } from '../context/StateContext';
 
 function RidesCard({ ride }) {
   const { id, profile_img, user_name, ride_date, address1, address2, ride_participants, ride_time, ride_title } = ride;
+  const { user } = useStateContext();
 
   const handleIncrement = async (e) => {
-    e.preventDefault();
-
     const data = {
       id,
       participants: ride_participants,
     };
 
-    await axios.post('http://localhost:8080/rides/add-participants', data)
-      .then(res => window.location='/rides')
-      .catch((err) => {
+    await axios.post('http://localhost:8080/rides/add-participants', data).catch((err) => {
       console.log(err);
     });
+  };
+
+  // save ride to user's saved rides
+  const handleSave = async (e) => {
+    const data = {
+      user_id: user.id,
+      ride_id: id,
+    };
+
+    await axios
+      .post('http://localhost:8080/myrides', data)
+      .then((res) => {
+        console.log(data);
+        window.location = '/rides';
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -35,8 +51,9 @@ function RidesCard({ ride }) {
             <div className='author-name flex justify-center items-center ml-4 font-semibold text-primary'>
               {user_name}
             </div>
-            <div className='flex items-center absolute right-0'>
-              <AddParticipant id={id} increment={handleIncrement} />
+            {/* Join Ride Button */}
+            <div className='flex items-center z-10 absolute right-0'>
+              <AddParticipant id={id} increment={handleIncrement} handleSave={handleSave} />
             </div>
           </div>
           {/* Ride Title */}

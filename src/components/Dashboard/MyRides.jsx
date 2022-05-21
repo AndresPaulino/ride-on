@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MyRidesList from './MyRidesList';
 import SearchIcon from '@mui/icons-material/Search';
 

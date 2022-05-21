@@ -12,6 +12,7 @@ function SideNav() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
+    
     window.addEventListener('resize', () => {
       if (window.innerWidth > 640) {
         setOpen(true);

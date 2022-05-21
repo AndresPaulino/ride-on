@@ -14,7 +14,6 @@ function RidesList() {
         .get('http://localhost:8080/rides')
         .then((res) => {
           setRides(res.data);
-          console.log(res.data)
         })
         .catch((err) => {
           console.log(err);
