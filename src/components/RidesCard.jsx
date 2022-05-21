@@ -9,6 +9,8 @@ function RidesCard({ ride }) {
   const { id, profile_img, user_name, ride_date, address1, address2, ride_participants, ride_time, ride_title } = ride;
   const { user } = useStateContext();
 
+  // Increase the number of participants
+
   const handleIncrement = async (e) => {
     const data = {
       id,

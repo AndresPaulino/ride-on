@@ -5,7 +5,7 @@ import axios from 'axios';
 function ModalForm({ onClose }) {
   const { user } = useStateContext();
   const { id, user_name, profile_img } = user;
-  
+
   const titleRef = useRef();
   const addressRef = useRef();
   const dateRef = useRef();
@@ -25,11 +25,9 @@ function ModalForm({ onClose }) {
     return newDate;
   };
 
+  // Create a new ride
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // let seconds = new Date(dateRef.current.value).getTime() / 1000;
-    // let date = new Date(0).setUTCSeconds(seconds);
 
     const ride_title = titleRef.current.value;
     const ride_address = addressRef.current.value;

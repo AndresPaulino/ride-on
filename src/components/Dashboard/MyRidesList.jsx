@@ -1,4 +1,4 @@
-import React from 'react';
+import {Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useStateContext } from '../../context/StateContext';
@@ -25,12 +25,14 @@ function MyRidesList() {
     <article>
       {rides.map((ride) => {
         return (
+          <Link to={`/rides/${ride.id}`} key={ride.id}>
           <div key={ride.id} className='flex flex-col w-full'>
-            <div className='flex justify-between w-full text-primary p-2 border-b-[1px] border-quinaryDark hover:bg-gray-100 transition-all hover:border-0 hover:scale-105'>
+            <div className='flex justify-between w-full text-primary p-2 border-b-[1px] border-quinaryDark cursor-pointer hover:bg-gray-100 transition-all hover:border-0 hover:scale-105'>
               <h2>{ride.ride_title}</h2>
               <h2>{ride.ride_date}</h2>
             </div>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </article>
