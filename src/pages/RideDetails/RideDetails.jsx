@@ -28,8 +28,8 @@ function RideDetails(props) {
       </nav>
       <main className='bg-white py-14'>
         <Details rideDetails={rideDetails} />
-        <RideDetailsCommentForm />
-        <RideDetailsComments />
+        <RideDetailsCommentForm rideDetails={rideDetails} />
+        <RideDetailsComments rideDetails={rideDetails} />
       </main>
     </>
   );

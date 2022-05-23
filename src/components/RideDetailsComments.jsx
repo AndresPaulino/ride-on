@@ -1,44 +1,28 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function RideDetailsComments() {
-  const comments = [
-    {
-      id: 1,
-      user: {
-        id: 1,
-        profile_img: 'https://randomuser.me/api/portraits/men/90.jpg',
-        username: 'johndoe',
-      },
-      comment: 'This is a comment',
-      created_at: '2020-06-01T00:00:00.000Z',
-    },
-    {
-      id: 2,
-      user: {
-        id: 2,
-        profile_img: 'https://randomuser.me/api/portraits/men/97.jpg',
-        username: 'johndoe',
-      },
-      comment: 'This is a comment',
-      created_at: '2020-06-01T00:00:00.000Z',
-    },
-    {
-      id: 3,
-      user: {
-        id: 3,
-        profile_img: 'https://randomuser.me/api/portraits/men/94.jpg',
-        username: 'johndoe',
-      },
-      comment: 'lorem ipsum lorem ipsum sdfkl something here just regular random text for you to see',
-      created_at: '2020-06-01T00:00:00.000Z',
-    },
-  ];
+function RideDetailsComments({ rideDetails }) {
+  const [rideComments, setRideComments] = useState([]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      await axios
+        .get(`http://localhost:8080/rides/${rideDetails.id}/comments`)
+        .then((res) => {
+          console.log(res.data);
+          setRideComments(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchComments();
+  }, [rideDetails.id]);
 
   return (
     <div className='py-10'>
       <ul className='flex flex-col px-5'>
-        {comments.map((comment) => (
+        {rideComments.map((comment) => (
           <li className='flex my-3' key={comment.id}>
             <div className='flex min-w-1/4 rounded-full'>
               <img

@@ -1,17 +1,24 @@
 import { useState } from 'react';
 import { useStateContext } from '../context/StateContext';
 import axios from 'axios';
+import { getListItemTextUtilityClass } from '@mui/material';
 
-function RideDetailsCommentForm(props) {
+function RideDetailsCommentForm({ rideDetails }) {
   const [comment, setComment] = useState('');
   const { user } = useStateContext();
+
+  console.log(user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post(`http://localhost:8080/rides/${props.match.params.id}/comments`, {
-        comment,
-        userId: user.id,
+      .post(`http://localhost:8080/rides/${rideDetails.id}/comments`, {
+        user_comment: comment,
+        user_id: user.id,
+        ride_id: rideDetails.id,
+        profile_img: user.profile_img,
+        user_name: user.user_name,
+        created: Math.floor(Date.now() / 1000),
       })
       .then((res) => {
         console.log(res);
