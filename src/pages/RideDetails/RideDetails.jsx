@@ -3,6 +3,7 @@ import axios from 'axios';
 import Details from '../../components/Details';
 import NavigationBar from '../../components/NavigationBar';
 import RideDetailsCommentForm from '../../components/RideDetailsCommentForm';
+import RideDetailsComments from '../../components/RideDetailsComments';
 
 function RideDetails(props) {
   const [rideDetails, setRideDetails] = useState([]);
@@ -28,6 +29,7 @@ function RideDetails(props) {
       <main className='bg-white py-14'>
         <Details rideDetails={rideDetails} />
         <RideDetailsCommentForm />
+        <RideDetailsComments />
       </main>
     </>
   );
