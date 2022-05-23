@@ -133,7 +133,7 @@ export default function Example() {
           </div>
 
           <Disclosure.Panel className='sm:hidden transition ease-in-out duration-300 opacity-100'>
-            <div className='px-2 pt-2 pb-3 space-y-1 fixed top-16 bg-gray-900 w-full z-10 shadow-xl'>
+            <div className='px-2 pt-2 pb-3 space-y-1 fixed top-16 bg-gray-900 w-full z-50 shadow-xl'>
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}

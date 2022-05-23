@@ -7,7 +7,7 @@ import { useStateContext } from '../context/StateContext';
 
 function RideCardDetails({ rideDetails }) {
   const { id, profile_img, user_name, ride_date, address1, address2, ride_participants, ride_time, ride_title } =
-    rideDetails;
+    rideDetails.rideDetails;
   const { user } = useStateContext();
 
   // Increase the number of participants
@@ -31,7 +31,7 @@ function RideCardDetails({ rideDetails }) {
     };
 
     await axios
-      .post('http://localhost:8080/myrides', data)
+      .post('http://localhost:8080/myrides/', data)
       .then((res) => {
         console.log(data);
         window.location = '/rides';
