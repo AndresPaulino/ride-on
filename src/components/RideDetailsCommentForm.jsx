@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useStateContext } from '../context/StateContext';
 import axios from 'axios';
-import { getListItemTextUtilityClass } from '@mui/material';
 
 function RideDetailsCommentForm({ rideDetails }) {
   const [comment, setComment] = useState('');
   const { user } = useStateContext();
 
-  console.log(user);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const datePosted = new Date().toLocaleDateString('en-US', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
+    
     await axios
       .post(`http://localhost:8080/rides/${rideDetails.id}/comments`, {
         user_comment: comment,
@@ -18,7 +21,7 @@ function RideDetailsCommentForm({ rideDetails }) {
         ride_id: rideDetails.id,
         profile_img: user.profile_img,
         user_name: user.user_name,
-        created: Math.floor(Date.now() / 1000),
+        created: datePosted,
       })
       .then((res) => {
         console.log(res);
@@ -26,6 +29,7 @@ function RideDetailsCommentForm({ rideDetails }) {
       .catch((err) => {
         console.log(err);
       });
+    setComment('');
   };
 
   return (

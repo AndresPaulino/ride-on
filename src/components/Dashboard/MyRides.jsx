@@ -32,7 +32,9 @@ function MyRides() {
         </div>
       </div>
       {/* Rides List */}
-      <div className='py-8 shadow-lg drop-shadow-all'>{active ? <MyRidesList /> : <MyRidesList />}</div>
+      <div className='py-8 shadow-lg drop-shadow-all overflow-y-scroll scroll-m-2 overflow-hidden overflow-x-hidden max-h-56'>
+        {active ? <MyRidesList /> : <MyRidesList />}
+      </div>
     </section>
   );
 }

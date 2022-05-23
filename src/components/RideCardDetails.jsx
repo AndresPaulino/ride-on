@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PeopleIcon from '@mui/icons-material/People';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -13,6 +14,7 @@ function RideCardDetails({ rideDetails }) {
   // Increase the number of participants
 
   const handleIncrement = async (e) => {
+    e.preventDefault();
     const data = {
       id,
       participants: ride_participants,
@@ -25,6 +27,7 @@ function RideCardDetails({ rideDetails }) {
 
   // save ride to user's saved rides
   const handleSave = async (e) => {
+    e.preventDefault();
     const data = {
       user_id: user.id,
       ride_id: id,
@@ -34,6 +37,24 @@ function RideCardDetails({ rideDetails }) {
       .post('http://localhost:8080/myrides/', data)
       .then((res) => {
         console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // delete ride from user's saved rides
+  const handleDelete = async (e) => {
+    const data = {
+      user_id: user.id,
+      ride_id: id,
+    };
+
+    await axios
+      .delete(`http://localhost:8080/myrides/${id}`, data)
+
+      .then((res) => {
+        console.log(data);
         window.location = '/rides';
       })
       .catch((err) => {
@@ -41,9 +62,11 @@ function RideCardDetails({ rideDetails }) {
       });
   };
 
+  useEffect(() => {}, [ride_participants]);
+
   return (
     <article className='clearfix open mb-5 border-l-4 rounded-md border-primary m-4'>
-      <div className='title p-4 rounded-lg shadow-sm shadow-indigo-100 flex hover:border-primary hover:rounded-r-lg hover:border-r-[20px] transition-all hover:ease-in-out hover:delay-200 relative'>
+      <div className='title p-4 rounded-lg shadow-sm shadow-indigo-100 flex relative'>
         <div className='main-content mt-2 flex-col relative w-full'>
           {/* Author */}
           <div className='author flex relative'>

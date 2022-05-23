@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -31,6 +31,15 @@ function SideNav() {
     sessionStorage.removeItem('token');
     window.location = '/';
   };
+
+  useEffect(() => { 
+    if (window.innerWidth > 640) {
+      setOpen(true);
+    }
+    if (window.innerWidth < 640) {
+      setOpen(false);
+    }
+  });
 
   return (
     <>
