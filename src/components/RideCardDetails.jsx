@@ -7,7 +7,7 @@ import AddParticipant from './AddParticipant';
 import { useStateContext } from '../context/StateContext';
 
 function RideCardDetails({ rideDetails }) {
-  const { id, profile_img, user_name, ride_date, address1, address2, ride_participants, ride_time, ride_title } =
+  let { id, profile_img, user_name, ride_date, address1, address2, ride_participants, ride_time, ride_title } =
     rideDetails.rideDetails;
   const { user } = useStateContext();
 
@@ -61,8 +61,6 @@ function RideCardDetails({ rideDetails }) {
         console.log(err);
       });
   };
-
-  useEffect(() => {}, [ride_participants]);
 
   return (
     <article className='clearfix open mb-5 border-l-4 rounded-md border-primary m-4'>

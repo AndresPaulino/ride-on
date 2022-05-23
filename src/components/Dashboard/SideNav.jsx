@@ -12,7 +12,6 @@ function SideNav() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    
     window.addEventListener('resize', () => {
       if (window.innerWidth > 640) {
         setOpen(true);
@@ -32,12 +31,9 @@ function SideNav() {
     window.location = '/';
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     if (window.innerWidth > 640) {
       setOpen(true);
-    }
-    if (window.innerWidth < 640) {
-      setOpen(false);
     }
   });
 
@@ -62,7 +58,9 @@ function SideNav() {
       {/* Side Nav */}
       <div
         onChange={handleOpen()} // always display side nav on tablet + desktop
-        className={`z-10 absolute transition-all ease-in delay-200 sm:block border-r-2 drop-shadow-right ${open ? 'left-0' : '-left-[15rem]'}`}
+        className={`z-10 absolute transition-all ease-in delay-200 sm:block border-r-2 drop-shadow-right ${
+          open ? 'left-0' : '-left-[15rem]'
+        }`}
       >
         <div className='container flex-col justify-center items-center align-middle max-w-[15rem] py-10 bg-white h-screen'>
           {/* Profile Picture */}
@@ -89,10 +87,10 @@ function SideNav() {
                 </a>
               </div>
               <div className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'>
-                <a href='/' className='text-sm '>
+                <div className='text-sm'>
                   <SettingsIcon className='ml-2' />
                   <span className='ml-3'>Settings</span>
-                </a>
+                </div>
               </div>
               <div
                 className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'

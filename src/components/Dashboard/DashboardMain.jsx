@@ -5,7 +5,7 @@ import MyRides from './MyRides';
 import group from '../../assets/images/group.jpg';
 import solo from '../../assets/images/motorcycle_solo.jpg';
 
-function DashboardMain() {
+function DashboardMain({ settings, profile }) {
   const { user } = useStateContext();
 
   return (
@@ -24,7 +24,7 @@ function DashboardMain() {
       {/* Dashboard Container */}
       <div className='px-14 pt-5'>
         <div className='drop-shadow-all bg-white p-2 my-4 rounded'>
-          <h1 className='text-xl font-bold text-primary'>Hi, {user.user_name}</h1>
+          <h1 className='text-xl font-bold text-primary'>Hey, {user.user_name}</h1>
           <h1 className='text-gray-700'>Welcome to your dashboard</h1>
         </div>
       </div>

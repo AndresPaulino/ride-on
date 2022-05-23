@@ -61,7 +61,7 @@ function SignUp() {
         e.target.reset();
         console.log(error);
         setTimeout(() => {
-          window.location = '/login';
+          window.location = '/';
         }, 2000);
       })
       .catch((error) => {
