@@ -82,7 +82,7 @@ function SideNav({ viewSettings }) {
                 </a>
               </div>
               <div className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'>
-                <a href='/' className='text-sm '>
+                <a href='/dashboard' className='text-sm '>
                   <TwoWheelerIcon className='ml-2' />
                   <span className='ml-3'>My Rides</span>
                 </a>
