@@ -71,7 +71,7 @@ function SettingsForm() {
 
 
   return (
-    <div className='w-full h-screen sm:pl-[10rem] align-middle items-center bg-gray-800'>
+    <div className='w-full pb-10 sm:pl-[10rem] align-middle items-center bg-gray-800'>
       {/* Logo */}
       <div className='flex flex-col w-full sm:pl-[3.5rem] align-middle items-center'>
         <div className='flex justify-center pt-12 rounded'>
