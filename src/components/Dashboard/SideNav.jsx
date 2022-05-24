@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -7,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useStateContext } from '../../context/StateContext';
 
-function SideNav() {
+function SideNav({ viewSettings }) {
   const { user } = useStateContext();
   const [open, setOpen] = useState(false);
 
@@ -87,10 +88,10 @@ function SideNav() {
                 </a>
               </div>
               <div className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'>
-                <div className='text-sm'>
+                <Link to='/settings' onClick={viewSettings} className='text-sm'>
                   <SettingsIcon className='ml-2' />
                   <span className='ml-3'>Settings</span>
-                </div>
+                </Link>
               </div>
               <div
                 className='py-4 hover:border-r-4 cursor-pointer border-quinary text-primary hover:font-semibold'
