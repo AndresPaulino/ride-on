@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PeopleIcon from '@mui/icons-material/People';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddParticipant from './AddParticipant';
+import RemoveParticipant from './RemoveParticipant';
 import { useStateContext } from '../context/StateContext';
 
 function RideCardDetails({ rideDetails }) {
@@ -11,10 +12,10 @@ function RideCardDetails({ rideDetails }) {
     rideDetails.rideDetails;
   const { user } = useStateContext();
 
-  // Increase the number of participants
+  const [join, setJoin] = useState(false);
 
+  // Increase the number of participants
   const handleIncrement = async (e) => {
-    e.preventDefault();
     const data = {
       id,
       participants: ride_participants,
@@ -25,18 +26,29 @@ function RideCardDetails({ rideDetails }) {
     });
   };
 
+  // Decrease the number of participants
+  const handleDecrement = async (e) => {
+    const data = {
+      id,
+      participants: ride_participants,
+    };
+
+    await axios.post('http://localhost:8080/rides/remove-participants', data).catch((err) => {
+      console.log(err);
+    });
+  };
+
   // save ride to user's saved rides
   const handleSave = async (e) => {
-    e.preventDefault();
     const data = {
       user_id: user.id,
       ride_id: id,
     };
 
     await axios
-      .post('http://localhost:8080/myrides/', data)
+      .post('http://localhost:8080/myrides', data)
       .then((res) => {
-        console.log(data);
+        setJoin(true);
       })
       .catch((err) => {
         console.log(err);
@@ -45,22 +57,35 @@ function RideCardDetails({ rideDetails }) {
 
   // delete ride from user's saved rides
   const handleDelete = async (e) => {
-    const data = {
-      user_id: user.id,
-      ride_id: id,
-    };
-
     await axios
-      .delete(`http://localhost:8080/myrides/${id}`, data)
-
+      .delete(`http://localhost:8080/myrides/${user.id}/${id}`)
       .then((res) => {
-        console.log(data);
-        window.location = '/rides';
+        setJoin(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  // check if user is already a participant
+  useEffect(() => {
+    const checkParticipant = async (e) => {
+      await axios
+        .get(`http://localhost:8080/myrides/${user.id}/${id}`)
+        .then((res) => {
+          res.data.forEach((ride) => {
+            if (ride.user_id === user.id && ride.ride_id === id) {
+              setJoin(true);
+            }
+          });
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    checkParticipant();
+  }, [id, user.id]);
 
   return (
     <article className='clearfix open mb-5 border-l-4 rounded-md border-primary m-4'>
@@ -76,9 +101,17 @@ function RideCardDetails({ rideDetails }) {
               {user_name}
             </div>
             {/* Join Ride Button */}
-            <div className='flex items-center z-10 absolute right-0'>
-              <AddParticipant id={id} increment={handleIncrement} handleSave={handleSave} />
-            </div>
+            {!join && (
+              <div className='flex items-center z-10 absolute right-0'>
+                <AddParticipant id={id} increment={handleIncrement} handleSave={handleSave} />
+              </div>
+            )}
+            {/* Leave Ride Button */}
+            {join && (
+              <div className='flex items-center z-10 absolute right-0'>
+                <RemoveParticipant id={id} decriment={handleDecrement} handleDelete={handleDelete} />
+              </div>
+            )}
           </div>
           {/* Ride Title */}
           <div className='ride-title flex justify-start items-left pt-4 w-96'>

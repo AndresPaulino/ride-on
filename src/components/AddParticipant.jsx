@@ -1,7 +1,6 @@
 function AddParticipant({ increment, handleSave }) {
 
   const handleClick = (e) => {
-    e.preventDefault();
     increment();
     handleSave();
   };

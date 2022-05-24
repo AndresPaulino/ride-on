@@ -31,11 +31,12 @@ function ProfilePicture() {
   return (
     <div className='w-full pb-5 sm:pl-[10rem] flex align-middle justify-center items-center bg-gray-800'>
       <div className='flex flex-col align-middle justify-center items-center bg-white w-full max-w-lg rounded py-5 drop-shadow-all'>
+        <h2 className='text-primary font-semibold mb-5'>Change Profile Image</h2>
         <img className='w-48 h-auto rounded-full mb-5' src={user.profile_img} alt='profile' />
         <form onSubmit={handleSubmit} className='flex flex-col w-full justify-center align-middle items-center gap-5'>
           <label
             htmlFor='profile_img'
-            className='text-primary bg-quinary py-2 px-4 rounded hover:bg-quinaryDark hover:text-textColor cursor-pointer'
+            className='text-primary bg-quinary py-2 px-4 rounded hover:bg-quinaryDark hover:text-textColor cursor-pointer drop-shadow-all'
           >
             Choose Picture
           </label>
