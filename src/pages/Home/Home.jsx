@@ -8,9 +8,6 @@ function Home() {
 
   const { user, failedAuth } = useStateContext();
 
-  console.log(failedAuth);
-  console.log(user)
-
   if (failedAuth) {
     window.location = '/';
   }

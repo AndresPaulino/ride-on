@@ -1,25 +1,30 @@
 import React from 'react';
 import { useStateContext } from '../../context/StateContext';
 import axios from 'axios';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 function ProfilePicture() {
   const { user } = useStateContext();
 
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(user.profile_img);
 
-  const handleChange = (event) => {
-    setImage(event.target.value);
+  const handleImageChange = (e) => {
+      const image = e.target.files[0];
+      console.log(image);
+    setImage(image);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = {
-      id: user.id,
-      profile_img: image,
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+      formData.append('image', image);
+      console.log(formData);
     axios
-      .post('/api/users/update-profile-picture', data)
+      .post('http://localhost:8080/update-profile-img', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
       .then((res) => {
         console.log(res);
       })
@@ -32,7 +37,7 @@ function ProfilePicture() {
     <div className='w-full pb-5 sm:pl-[10rem] flex align-middle justify-center items-center bg-gray-800'>
       <div className='flex flex-col align-middle justify-center items-center bg-white w-full max-w-lg rounded py-5 drop-shadow-all'>
         <h2 className='text-primary font-semibold mb-5'>Change Profile Image</h2>
-        <img className='w-48 h-auto rounded-full mb-5' src={user.profile_img} alt='profile' />
+        <img className='w-48 h-auto rounded-full mb-5' src={image} alt='profile' />
         <form onSubmit={handleSubmit} className='flex flex-col w-full justify-center align-middle items-center gap-5'>
           <label
             htmlFor='profile_img'
@@ -40,7 +45,15 @@ function ProfilePicture() {
           >
             Choose Picture
           </label>
-          <input type='file' name='profile_img' id='profile_img' className='hidden' onChange={handleChange} />
+          <input
+            onChange={handleImageChange}
+            type='file'
+            accept='image/*'
+            name='profile_img'
+            id='profile_img'
+            label='File'
+            className='hidden'
+          />
           <button className='bg-quinary hover:bg-quinaryDark hover:text-textColor px-4 py-2 rounded text-primary drop-shadow-all '>
             Upload
           </button>

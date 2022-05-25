@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PeopleIcon from '@mui/icons-material/People';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddParticipant from './AddParticipant';
 import { useStateContext } from '../context/StateContext';
+import RemoveParticipant from './RemoveParticipant';
 
 function RidesCard({ ride }) {
   const { id, profile_img, user_name, ride_date, address1, address2, ride_participants, ride_time, ride_title } = ride;
@@ -11,6 +13,9 @@ function RidesCard({ ride }) {
 
   // Increase the number of participants
 
+  const [join, setJoin] = useState(false);
+
+  // Increase the number of participants
   const handleIncrement = async (e) => {
     const data = {
       id,
@@ -18,6 +23,18 @@ function RidesCard({ ride }) {
     };
 
     await axios.post('http://localhost:8080/rides/add-participants', data).catch((err) => {
+      console.log(err);
+    });
+  };
+
+  // Decrease the number of participants
+  const handleDecrement = async (e) => {
+    const data = {
+      id,
+      participants: ride_participants,
+    };
+
+    await axios.post('http://localhost:8080/rides/remove-participants', data).catch((err) => {
       console.log(err);
     });
   };
@@ -32,13 +49,44 @@ function RidesCard({ ride }) {
     await axios
       .post('http://localhost:8080/myrides', data)
       .then((res) => {
-        console.log(data);
-        window.location = '/rides';
+        setJoin(true);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  // delete ride from user's saved rides
+  const handleDelete = async (e) => {
+    await axios
+      .delete(`http://localhost:8080/myrides/${user.id}/${id}`)
+      .then((res) => {
+        setJoin(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // check if user is already a participant
+  useEffect(() => {
+    const checkParticipant = async (e) => {
+      await axios
+        .get(`http://localhost:8080/myrides/${user.id}/${id}`)
+        .then((res) => {
+          res.data.forEach((ride) => {
+            if (ride.user_id === user.id && ride.ride_id === id) {
+              setJoin(true);
+            }
+          });
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    checkParticipant();
+  }, [id, user.id]);
 
   return (
     <article className='clearfix open mb-5 border-l-4 rounded-md border-primary m-4'>
@@ -54,13 +102,21 @@ function RidesCard({ ride }) {
               {user_name}
             </div>
             {/* Join Ride Button */}
-            <div className='flex items-center z-10 absolute right-0'>
-              <AddParticipant id={id} increment={handleIncrement} handleSave={handleSave} />
-            </div>
+            {!join && (
+              <div className='flex items-center z-20 absolute right-0'>
+                <AddParticipant id={id} increment={handleIncrement} handleSave={handleSave} />
+              </div>
+            )}
+            {/* Leave Ride Button */}
+            {join && (
+              <div className='flex items-center z-20 absolute right-0'>
+                <RemoveParticipant id={id} decriment={handleDecrement} handleDelete={handleDelete} />
+              </div>
+            )}
           </div>
           {/* Ride Title */}
           <div className='ride-title flex justify-start items-left pt-4 w-96'>
-            <h2 className='text-4xl font-semibold'>{ride_title}</h2>
+            <h2 className='text-4xl font-semibold text-gray-800'>{ride_title}</h2>
           </div>
           {/* Ride Details */}
           <div className='ride-description flex items-center pt-12'>
