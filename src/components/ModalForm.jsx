@@ -1,13 +1,23 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useStateContext } from '../context/StateContext';
+import PlacesAutocomplete from './PlacesAutocomplete';
 import axios from 'axios';
 
 function ModalForm({ onClose }) {
   const { user } = useStateContext();
   const { id, user_name, profile_img } = user;
+  const [address1, setAddress1] = useState('');
+  const [address2, setAddress2] = useState('');
 
+  const handleAddress = (address) => {
+    let address1 = address.split(',')[0];
+    let address2 = address.split(',').slice(1).join(',');
+    setAddress1(address1);
+    setAddress2(address2);
+  };
+
+  // Refs
   const titleRef = useRef();
-  const addressRef = useRef();
   const dateRef = useRef();
   const timeRef = useRef();
   const descriptionRef = useRef();
@@ -30,7 +40,7 @@ function ModalForm({ onClose }) {
     e.preventDefault();
 
     const ride_title = titleRef.current.value;
-    const ride_address = addressRef.current.value;
+    const ride_address = address1;
     const ride_date = convertDate(dateRef.current.value);
     const ride_time = timeRef.current.value;
     const ride_description = descriptionRef.current.value;
@@ -91,11 +101,12 @@ function ModalForm({ onClose }) {
             <input
               className='w-full bg-white p-2 rounded-lg'
               type={'search'}
-              placeholder='Ride From'
+              placeholder='City'
               name='ride_from'
               ref={fromRef}
             />
           </div>
+
           {/* Date */}
           <div className='flex-col my-4 max-w-[10rem]'>
             <label className='text-white mb-0 block'>Date</label>
@@ -108,9 +119,9 @@ function ModalForm({ onClose }) {
           </div>
         </div>
         {/* Address */}
-        <div>
-          <label className='text-white mb-2'>Address</label>
-          <input className='w-full bg-white p-2 rounded-lg' type={'address'} placeholder='Address' ref={addressRef} />
+        <label className='text-white mb-2'>Ride To</label>
+        <div className='z-10 bg-white rounded w-full'>
+          <PlacesAutocomplete handleAddress={handleAddress} />
         </div>
         {/* Description */}
         <div className='flex-col justify-start align-top items-start my-4'>
