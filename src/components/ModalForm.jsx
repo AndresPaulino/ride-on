@@ -40,14 +40,13 @@ function ModalForm({ onClose }) {
     e.preventDefault();
 
     const ride_title = titleRef.current.value;
-    const ride_address = address1;
     const ride_date = convertDate(dateRef.current.value);
     const ride_time = timeRef.current.value;
     const ride_description = descriptionRef.current.value;
     const ride_from = fromRef.current.value;
 
     // Form Validation
-    if (!ride_title || !ride_address || !ride_date || !ride_time || !ride_description || !ride_from) {
+    if (!ride_title || !address1 || !ride_date || !ride_time || !ride_description || !ride_from) {
       alert('Please fill out all fields');
       return;
     }
@@ -57,7 +56,8 @@ function ModalForm({ onClose }) {
       user_name,
       profile_img,
       ride_title,
-      ride_address,
+      address1,
+      address2,
       ride_date,
       ride_time,
       ride_description,

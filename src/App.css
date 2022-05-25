@@ -1,38 +1,37 @@
-.leaflet-container{
-
-  width: 388px;
+.leaflet-container {
+  width: 100%;
   height: 350px;
   border-radius: 4px;
   z-index: 5;
 }
 
 .map-search {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    padding: 10px;
-    margin-top: 2px;
-    border-radius: 4px;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  padding: 10px;
+  margin-top: 2px;
+  border-radius: 4px;
+  position: relative;
 }
 
 .map-input {
-    width: 100%;
-    border: none;
+  width: 100%;
+  border: none;
 }
 
 .map-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .map-list {
-    width: 100%;
-    z-index: 4;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    background-color: white;
-    border-radius: 4px;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
+  width: 100%;
+  z-index: 4;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: white;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
 }

@@ -9,7 +9,7 @@ function MapFrame() {
   const [markers, setMarkers] = useState([]);
 
   return (
-    <div className='leaflet-container ml-14'>
+    <div className='leaflet-container'>
       <MapContainer center={[lat, lng]} zoom={zoom} scrollWheelZoom={true}>
         <TileLayer url='https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=EgISFZBX6b1lb24zEhEd' />
       </MapContainer>

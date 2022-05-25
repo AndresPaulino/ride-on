@@ -54,7 +54,7 @@ function DashboardMain({ settings, profile }) {
       <div className='my-4 rounded p-2 bg-white drop-shadow-all mx-14'>
         <MyRides />
       </div>
-      <div className=''>
+      <div className='flex justify-center align-middle items-center mx-14'>
         <MapFrame />
       </div>
     </main>
