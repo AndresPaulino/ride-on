@@ -8,12 +8,19 @@ function ModalForm({ onClose }) {
   const { id, user_name, profile_img } = user;
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
+  const [lat, setLat] = useState('');
+  const [lng, setLng] = useState('');
 
   const handleAddress = (address) => {
     let address1 = address.split(',')[0];
     let address2 = address.split(',').slice(1).join(',');
     setAddress1(address1);
     setAddress2(address2);
+  };
+
+  const handleCoords = (lat, lng) => {
+    setLat(lat);
+    setLng(lng);
   };
 
   // Refs
@@ -35,13 +42,29 @@ function ModalForm({ onClose }) {
     return newDate;
   };
 
+  const convertTime = (time24) => {
+    let time = timeRef.current.value;
+    let timeArray = time.split(':');
+    let hour = timeArray[0];
+    let minute = timeArray[1];
+    let ampm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12;
+    hour = hour ? hour : 12;
+    if (minute < 10 || minute !== '00') {
+      minute = `0${minute}`;
+    }
+    let newTime = `${hour}:${minute} ${ampm}`;
+    return newTime;
+  };
+
   // Create a new ride
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const ride_title = titleRef.current.value;
     const ride_date = convertDate(dateRef.current.value);
-    const ride_time = timeRef.current.value;
+    // convert time to 12 hour format
+    const ride_time = convertTime(timeRef.current.value);
     const ride_description = descriptionRef.current.value;
     const ride_from = fromRef.current.value;
 
@@ -62,6 +85,8 @@ function ModalForm({ onClose }) {
       ride_time,
       ride_description,
       ride_from,
+      lat,
+      lng,
     };
 
     await axios
@@ -121,7 +146,7 @@ function ModalForm({ onClose }) {
         {/* Address */}
         <label className='text-white mb-2'>Ride To</label>
         <div className='z-10 bg-white rounded w-full'>
-          <PlacesAutocomplete handleAddress={handleAddress} />
+          <PlacesAutocomplete handleAddress={handleAddress} handleCoords={handleCoords} />
         </div>
         {/* Description */}
         <div className='flex-col justify-start align-top items-start my-4'>

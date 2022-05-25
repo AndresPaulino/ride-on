@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useStateContext } from '../context/StateContext';
+import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -7,6 +9,27 @@ function MapFrame() {
   const [lat, setLat] = useState(25.761681);
   const [lng, setLng] = useState(-80.191788);
   const [markers, setMarkers] = useState([]);
+
+  const { user } = useStateContext();
+
+  const handleMarkers = (lat, lng) => {
+    const newMarkers = [...markers, [lat, lng]];
+    setMarkers(newMarkers);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get(`http://localhost:8080/myrides/${user.id}`, user)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchData();
+  }, [user]);
 
   return (
     <div className='leaflet-container'>
