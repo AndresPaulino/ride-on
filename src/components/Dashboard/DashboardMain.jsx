@@ -2,6 +2,7 @@ import React from 'react';
 import { useStateContext } from '../../context/StateContext';
 import { Link } from 'react-router-dom';
 import MyRides from './MyRides';
+import Map from '../Map';
 import group from '../../assets/images/group.jpg';
 import solo from '../../assets/images/motorcycle_solo.jpg';
 
@@ -52,6 +53,9 @@ function DashboardMain({ settings, profile }) {
 
       <div className='my-4 rounded p-2 bg-white drop-shadow-all mx-14'>
         <MyRides />
+      </div>
+      <div>
+        <Map />
       </div>
     </main>
   );
