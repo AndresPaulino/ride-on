@@ -9,22 +9,18 @@ function ProfilePicture() {
   const [image, setImage] = useState(user.profile_img);
 
   const handleImageChange = (e) => {
-      const image = e.target.files[0];
-      console.log(image);
-    setImage(image);
+    console.log(e.target.files[0].name);
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-      formData.append('image', image);
-      console.log(formData);
+    const data = {
+      user_id: user.id,
+      profile_img: image.name,
+    };
     axios
-      .post('http://localhost:8080/update-profile-img', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      .post('http://localhost:8080/update-profile-img', data)
       .then((res) => {
         console.log(res);
       })
