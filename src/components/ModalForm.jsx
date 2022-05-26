@@ -50,7 +50,7 @@ function ModalForm({ onClose }) {
     let ampm = hour >= 12 ? 'PM' : 'AM';
     hour = hour % 12;
     hour = hour ? hour : 12;
-    if (minute < 10 || minute !== '00') {
+    if (minute < 10 && minute !== '00') {
       minute = `0${minute}`;
     }
     let newTime = `${hour}:${minute} ${ampm}`;

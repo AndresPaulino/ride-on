@@ -146,9 +146,9 @@ function RidesCard({ ride }) {
             {/* Address and Launch Date */}
             <div className='flex-col pb-4 text-right absolute right-1'>
               {/* Address */}
-              <div className='py-1 px-1 text-primary items-center justify-center flex-col'>
+              <div className='py-1 px-1 text-primary align-bottom justify-end items-end text-right flex-col'>
                 <h5 className='text-sm'>{address1}</h5>
-                <h5>{address2}</h5>
+                <h5 className='w-60 text-right'>{address2}</h5>
               </div>
               {/* Launch Date */}
               <div className='py-1 px-1'>

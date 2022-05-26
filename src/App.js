@@ -9,6 +9,7 @@ import ModalForm from './components/ModalForm';
 import Dashboard from './pages/Dashboard/Dashboard';
 import RideDetails from './pages/RideDetails/RideDetails';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/modal' component={ModalForm} />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/settings' component={SettingsPage} />
+          <Route path='/profile' component={Profile} />
         </StateContext>
       </Switch>
     </Router>

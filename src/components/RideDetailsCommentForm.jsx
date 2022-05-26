@@ -13,7 +13,7 @@ function RideDetailsCommentForm({ rideDetails }) {
       month: 'short',
       year: 'numeric',
     });
-    
+
     await axios
       .post(`http://localhost:8080/rides/${rideDetails.id}/comments`, {
         user_comment: comment,
@@ -33,25 +33,31 @@ function RideDetailsCommentForm({ rideDetails }) {
   };
 
   return (
-    <div className='flex pt-8 px-7'>
-      <div className='profile_img w-12 rounded-full mr-4'>
-        <img src={user.profile_img} alt='profile_img' className='rounded-full' />
+    <>
+      <div className='pt-8 px-7'>
+        <h2 className='text-primary text-lg font-semibold'>Join the discussion</h2>
       </div>
-      <div className='flex flex-col w-full items-end'>
-        <textarea
-          className='w-full h-24 px-4 py-2 border-2 border-primary rounded-md resize-none overflow-hidden'
-          placeholder='Add a comment...'
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <button
-          className='w-fit bg-quinary text-primary hover:text-white py-2 mt-4 px-2 rounded-md hover:bg-quinaryDark'
-          onClick={handleSubmit}
-        >
-          Add Comment
-        </button>
+
+      <div className='flex pt-8 px-7'>
+        <div className='profile_img w-12 rounded-full mr-4'>
+          <img src={user.profile_img} alt='profile_img' className='rounded-full' />
+        </div>
+        <div className='flex flex-col w-full items-end'>
+          <textarea
+            className='w-full h-24 px-4 py-2 border-2 border-primary rounded-md resize-none overflow-hidden'
+            placeholder='Add a comment...'
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button
+            className='w-fit bg-quinary text-primary hover:text-white py-2 mt-4 px-2 rounded-md hover:bg-quinaryDark'
+            onClick={handleSubmit}
+          >
+            Add Comment
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
