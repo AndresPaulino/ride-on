@@ -1,6 +1,6 @@
-![image](https://user-images.githubusercontent.com/93609044/170406939-de30f3b4-63da-41b2-8855-b444d72b4437.png)
+![image](https://user-images.githubusercontent.com/93609044/170407527-8ba09c46-6149-4f8b-af4f-e945ae9df36f.png)
 
-# RideOn
+![image](https://user-images.githubusercontent.com/93609044/170407607-eb119e24-4cb8-457d-9034-5633aa262d85.png)
 
 An application to create and find motorcycle meetup groups all over the world to travel together. 
 
