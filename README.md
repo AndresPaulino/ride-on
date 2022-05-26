@@ -1,3 +1,4 @@
+![image](https://user-images.githubusercontent.com/93609044/170406939-de30f3b4-63da-41b2-8855-b444d72b4437.png)
 
 # RideOn
 
@@ -8,9 +9,6 @@ An application to create and find motorcycle meetup groups all over the world to
 ## 🚀 About Me
 I'm a passionate full stack developer focusing on the MERN stack. I love to create, find problems and come up with simple, yet powerful solutions. This is my capstone
 project for the graduation of the March 2022 BrainStation Web Development Cohort. 
-
-## Screenshots
-
 
 ## What I Learned
 
@@ -34,3 +32,10 @@ I learned how to use TailwindCSS very comfortably and how to implement third par
 Please feel free to contact me at info@andrespaulino.com or paulinoandresmiguel@gmail.com
 
 I may be avilable for freelancing at the moment. 
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/93609044/170406987-2ef705d9-576d-41ec-ab73-4b3bfa97c79e.png)
+![image](https://user-images.githubusercontent.com/93609044/170407053-12a1d055-361f-4336-b741-b037864bc09d.png)
+![image](https://user-images.githubusercontent.com/93609044/170407231-109a36a1-e4e5-49f4-b5e1-ba9a07f3388a.png)
+![image](https://user-images.githubusercontent.com/93609044/170407267-e76a2f17-6425-4b06-9f82-ca1d734db139.png)
