@@ -14,6 +14,15 @@ function RideCardDetails({ rideDetails }) {
 
   const [join, setJoin] = useState(false);
 
+  // Check days left
+  const daysLeft = () => {
+    const today = new Date();
+    const rideDate = new Date(ride_date);
+    const timeDiff = Math.abs(rideDate.getTime() - today.getTime());
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return diffDays;
+  };
+
   // Increase the number of participants
   const handleIncrement = async (e) => {
     const data = {
@@ -121,9 +130,9 @@ function RideCardDetails({ rideDetails }) {
           <div className='ride-description flex items-center pt-12'>
             {/* Participants and Time Left */}
             <div className='flex-col pb-4'>
-              {/* Time Left */}
-              <div className='time-left border-2 rounded-lg py-1 px-2 text-primary bg-quinary items-center justify-center flex'>
-                <h4 className='text-sm font-semibold'>2 days left</h4>
+              {/* Days Left */}
+              <div className='border-2 rounded-lg py-1 px-2 text-primary bg-quinary items-center justify-center flex'>
+                <h4 className='text-sm font-semibold'>{daysLeft()} days left</h4>
               </div>
               {/* Participants */}
               <div className='py-1 px-1'>
