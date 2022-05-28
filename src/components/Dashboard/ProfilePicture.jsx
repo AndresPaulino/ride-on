@@ -23,6 +23,7 @@ function ProfilePicture() {
 
   // Handle upload for logged in user
   const handleSubmitUpload = (event) => {
+    event.preventDefault();
     const formData = new FormData();
     formData.append('file', imageFile);
     formData.append('upload_preset', 'hos3vnjf');
@@ -30,10 +31,14 @@ function ProfilePicture() {
     console.log(imageFile);
 
     axios.post('https://api.cloudinary.com/v1_1/elysium-devleopers/image/upload', formData).then((res) => {
-      console.log(res);
+      axios
+        .put(`http://localhost:8080/upload/${user.id}`, {
+          profile_img: res.data.secure_url,
+        })
+        .then((res) => {
+          console.log(res);
+        });
     });
-
-    event.preventDefault();
   };
 
   return (
