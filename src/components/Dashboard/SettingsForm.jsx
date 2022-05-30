@@ -10,9 +10,21 @@ function SettingsForm() {
   const { user } = useStateContext();
 
   const [bike, setBike] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [city, setCity] = useState('');
 
   const handleChange = (event) => {
-    setBike(event.target.value);
+    const { name, value } = event.target;
+    if (name === 'bike') {
+      setBike(value);
+    } else if (name === 'firstName') {
+      setFirstName(value);
+    } else if (name === 'lastName') {
+      setLastName(value);
+    } else if (name === 'city') {
+      setCity(value);
+    }
   };
 
   const bikes = [
@@ -34,32 +46,23 @@ function SettingsForm() {
     },
   ];
 
-  const firstNameRef = useRef(null);
-  const lastNameRef = useRef(null);
-  const cityRef = useRef(null);
   const currentPasswordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const first_name = firstNameRef.current.value;
-    const last_name = lastNameRef.current.value;
-    const city = cityRef.current.value;
-    const currentPassword = currentPasswordRef.current.value;
-    const confirmPassword = confirmPasswordRef.current.value;
-    const bike_model = bike;
 
     const data = {
-      first_name,
-      last_name,
+      first_name: firstName,
+      last_name: lastName,
       city,
-      currentPassword,
-      confirmPassword,
-      bike_model,
+      bike_model: bike,
     };
-    
+
+    console.log(data);
+
     axios
-      .put(`/api/users/${user.id}`, data)
+      .put(`http://localhost:8080/settings/${user.id}`, data)
       .then((res) => {
         console.log(res);
       })
@@ -67,8 +70,6 @@ function SettingsForm() {
         console.log(err);
       });
   };
-
-
 
   return (
     <div className='w-full pb-10 sm:pl-[10rem] align-middle items-center bg-gray-800'>
@@ -101,13 +102,37 @@ function SettingsForm() {
         {/* Names */}
         <div className='flex flex-col justify-center align-middle items-start bg-white p-6 py-5 rounded drop-shadow-all max-w-lg'>
           <div className='flex gap-5 mb-5'>
-            <TextField id='first_name' label='First Name' variant='outlined' size='small' ref={firstNameRef} />
-            <TextField id='last_name' label='Last Name' variant='outlined' size='small' ref={lastNameRef} />
+            <TextField
+              id='first_name'
+              label='First Name'
+              name='firstName'
+              variant='outlined'
+              size='small'
+              value={firstName}
+              onChange={handleChange}
+            />
+            <TextField
+              id='last_name'
+              label='Last Name'
+              name='lastName'
+              variant='outlined'
+              size='small'
+              value={lastName}
+              onChange={handleChange}
+            />
           </div>
           {/* City */}
           <div className='flex mb-5 gap-5'>
             <div className='w-full md:mr-3'>
-              <TextField id='city' label='City' variant='outlined' size='small' />
+              <TextField
+                id='city'
+                label='City'
+                name='city'
+                variant='outlined'
+                size='small'
+                value={city}
+                onChange={handleChange}
+              />
             </div>
             {/* Bike Model */}
             <div className='w-full'>
@@ -116,6 +141,7 @@ function SettingsForm() {
                 select
                 label='Bike Model'
                 value={bike}
+                name='bike'
                 size='small'
                 onChange={handleChange}
                 helperText='Please select your bike model'
