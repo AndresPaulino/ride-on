@@ -11,7 +11,7 @@ function RidesList() {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get('http://localhost:8080/rides')
+        .get(`${process.env.REACT_APP_DB_URL}/rides`)
         .then((res) => {
           setRides(res.data);
         })

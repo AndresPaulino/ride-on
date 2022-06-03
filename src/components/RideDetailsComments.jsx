@@ -8,7 +8,7 @@ function RideDetailsComments({ rideDetails }) {
   useEffect(() => {
     const fetchComments = async () => {
       await axios
-        .get(`http://localhost:8080/rides/${rideDetails.id}/comments`)
+        .get(`${process.env.REACT_APP_DB_URL}/rides/${rideDetails.id}/comments`)
         .then((res) => {
           setRideComments(res.data);
         })

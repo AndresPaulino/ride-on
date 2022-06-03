@@ -90,7 +90,7 @@ function ModalForm({ onClose }) {
     };
 
     await axios
-      .post('http://localhost:8080/rides', data)
+      .post(`${process.env.REACT_APP_DB_URL}/rides`, data)
       .then(() => {
         onClose();
         window.location = '/rides';

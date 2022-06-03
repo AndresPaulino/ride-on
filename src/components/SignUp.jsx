@@ -51,7 +51,7 @@ function SignUp() {
 
     // Create user
     await axios
-      .post('http://localhost:8080/register', {
+      .post(`${process.env.REACT_APP_DB_URL}/register`, {
         username: usernameRef.current.value,
         email: emailRef.current.value,
         password: passwordRef.current.value,

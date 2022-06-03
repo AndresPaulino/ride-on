@@ -30,7 +30,7 @@ function RideCardDetails({ rideDetails }) {
       participants: ride_participants,
     };
 
-    await axios.post('http://localhost:8080/rides/add-participants', data).catch((err) => {
+    await axios.post(`${process.env.REACT_APP_DB_URL}/rides/add-participants`, data).catch((err) => {
       console.log(err);
     });
   };
@@ -42,7 +42,7 @@ function RideCardDetails({ rideDetails }) {
       participants: ride_participants,
     };
 
-    await axios.post('http://localhost:8080/rides/remove-participants', data).catch((err) => {
+    await axios.post(`${process.env.REACT_APP_DB_URL}/rides/remove-participants`, data).catch((err) => {
       console.log(err);
     });
   };
@@ -55,7 +55,7 @@ function RideCardDetails({ rideDetails }) {
     };
 
     await axios
-      .post('http://localhost:8080/myrides', data)
+      .post(`${process.env.REACT_APP_DB_URL}/myrides`, data)
       .then((res) => {
         setJoin(true);
       })
@@ -67,7 +67,7 @@ function RideCardDetails({ rideDetails }) {
   // delete ride from user's saved rides
   const handleDelete = async (e) => {
     await axios
-      .delete(`http://localhost:8080/myrides/${user.id}/${id}`)
+      .delete(`${process.env.REACT_APP_DB_URL}/myrides/${user.id}/${id}`)
       .then((res) => {
         setJoin(false);
       })
@@ -80,7 +80,7 @@ function RideCardDetails({ rideDetails }) {
   useEffect(() => {
     const checkParticipant = async (e) => {
       await axios
-        .get(`http://localhost:8080/myrides/${user.id}/${id}`)
+        .get(`${process.env.REACT_APP_DB_URL}/myrides/${user.id}/${id}`)
         .then((res) => {
           res.data.forEach((ride) => {
             if (ride.user_id === user.id && ride.ride_id === id) {

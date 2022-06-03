@@ -32,7 +32,7 @@ function ProfilePicture() {
 
     axios.post('https://api.cloudinary.com/v1_1/elysium-devleopers/image/upload', formData).then((res) => {
       axios
-        .put(`http://localhost:8080/upload/${user.id}`, {
+        .put(`${process.env.REACT_APP_DB_URL}/upload/${user.id}`, {
           profile_img: res.data.secure_url,
         })
         .then((res) => {

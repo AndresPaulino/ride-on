@@ -62,7 +62,7 @@ function SettingsForm() {
     console.log(data);
 
     axios
-      .put(`http://localhost:8080/settings/${user.id}`, data)
+      .put(`${process.env.REACT_APP_DB_URL}/settings/${user.id}`, data)
       .then((res) => {
         console.log(res);
       })

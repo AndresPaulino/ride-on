@@ -11,7 +11,7 @@ function RideDetails(props) {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:8080/rides/${props.match.params.id}`)
+        .get(`${process.env.REACT_APP_DB_URL}/rides/${props.match.params.id}`)
         .then((res) => {
           setRideDetails(res.data);
         })

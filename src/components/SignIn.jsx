@@ -33,7 +33,7 @@ function SignIn() {
     }
 
     await axios
-      .post('http://localhost:8080/login', {
+      .post(`${process.env.REACT_APP_DB_URL}/login`, {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       })
@@ -42,7 +42,7 @@ function SignIn() {
         console.log(response.data.token);
         notifySuccess();
         setTimeout(() => {
-          window.location='/home';
+          window.location = '/home';
         }, 2000);
       })
       .catch((error) => {

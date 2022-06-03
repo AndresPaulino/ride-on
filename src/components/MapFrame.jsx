@@ -24,7 +24,7 @@ function MapFrame() {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:8080/myrides/${user.id}`, user)
+        .get(`${process.env.REACT_APP_DB_URL}/myrides/${user.id}`, user)
         .then((res) => {
           res.data.forEach((ride) => {
             setRides((rides) => [...rides, ride]);

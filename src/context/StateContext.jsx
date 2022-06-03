@@ -19,7 +19,7 @@ export const StateContext = ({ children }) => {
       }
 
       await axios
-        .get('http://localhost:8080/current', {
+        .get(`${process.env.REACT_APP_DB_URL}/current`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

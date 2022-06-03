@@ -15,7 +15,7 @@ function RideDetailsCommentForm({ rideDetails }) {
     });
 
     await axios
-      .post(`http://localhost:8080/rides/${rideDetails.id}/comments`, {
+      .post(`${process.env.REACT_APP_DB_URL}/rides/${rideDetails.id}/comments`, {
         user_comment: comment,
         user_id: user.id,
         ride_id: rideDetails.id,
