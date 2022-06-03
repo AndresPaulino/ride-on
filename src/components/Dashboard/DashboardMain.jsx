@@ -10,7 +10,7 @@ function DashboardMain({ settings, profile }) {
   const { user } = useStateContext();
 
   return (
-    <main className='bg-gray-800 w-full h-screen sm:pl-[10rem]'>
+    <main className='bg-gray-800 w-full h-full sm:pl-[10rem]'>
       {/* Logo */}
       <div className='flex flex-col w-full sm:justify-start sm:items-start sm:pl-[3.5rem]'>
         <div className='flex justify-center pt-12 rounded'>
@@ -54,7 +54,7 @@ function DashboardMain({ settings, profile }) {
       <div className='my-4 rounded p-2 bg-white drop-shadow-all mx-14'>
         <MyRides />
       </div>
-      <div className='flex justify-center align-middle items-center mx-14'>
+      <div className='flex justify-center align-middle items-center mx-14 pb-24'>
         <MapFrame />
       </div>
     </main>

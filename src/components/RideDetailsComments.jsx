@@ -25,12 +25,7 @@ function RideDetailsComments({ rideDetails }) {
         {rideComments.map((comment) => (
           <li className='flex my-3' key={uniqid()}>
             <div className='flex min-w-1/4 rounded-full'>
-              <img
-                className='w-12 mr-3 min-w-12 max-h-12 rounded-full'
-                src={comment.profile_img}
-                alt='profile_img'
-              
-              />
+              <img className='w-12 mr-3 min-w-12 max-h-12 rounded-full' src={comment.profile_img} alt='profile_img' />
             </div>
             <div className='flex flex-col w-full ml-2 border-b-[1px] border-gray-200'>
               <div className='flex justify-between mb-2'>

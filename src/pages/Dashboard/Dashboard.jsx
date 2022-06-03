@@ -3,8 +3,10 @@ import SideNav from '../../components/Dashboard/SideNav';
 
 function Dashboard() {
   return (
-    <div>
-      <SideNav />
+    <div className='h-full'>
+      <div className='h-full bg-white'>
+        <SideNav />
+      </div>
       <DashboardMain />
     </div>
   );

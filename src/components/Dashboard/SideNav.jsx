@@ -36,7 +36,7 @@ function SideNav({ viewSettings }) {
     if (window.innerWidth > 640) {
       setOpen(true);
     }
-  });
+  } , []);
 
   return (
     <>
@@ -59,11 +59,11 @@ function SideNav({ viewSettings }) {
       {/* Side Nav */}
       <div
         onChange={handleOpen()} // always display side nav on tablet + desktop
-        className={`z-10 absolute transition-all ease-in delay-200 sm:block border-r-2 drop-shadow-right ${
+        className={`z-10 absolute transition-all ease-in delay-200 h-full sm:block border-r-2 drop-shadow-right ${
           open ? 'left-0' : '-left-[15rem]'
         }`}
       >
-        <div className='container flex-col justify-center items-center align-middle max-w-[15rem] py-10 bg-white h-screen'>
+        <div className='container flex-col justify-center items-center align-middle max-w-[15rem] py-10 bg-white h-[60rem]'>
           {/* Profile Picture */}
           <div className='flex items-center justify-center p-3'>
             <img className='w-10 rounded-full' src={user.profile_img} alt='profile' />
