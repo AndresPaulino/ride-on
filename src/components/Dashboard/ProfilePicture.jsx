@@ -42,7 +42,7 @@ function ProfilePicture() {
   };
 
   return (
-    <div className='w-full pb-5 sm:pl-[10rem] flex align-middle justify-center items-center bg-gray-800'>
+    <div className='w-full pb-5 sm:pl-[10rem] flex align-middle justify-center items-center bg-gray-800 px-12 sm:px-0'>
       <div className='flex flex-col align-middle justify-center items-center bg-white w-full max-w-lg rounded py-5 drop-shadow-all'>
         <h2 className='text-primary font-semibold mb-5'>Change Profile Image</h2>
         <img className='w-48 h-auto rounded-full mb-5' src={image} alt='profile' />

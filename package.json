@@ -22,6 +22,7 @@
     "react-leaflet": "^4.0.0",
     "react-router-dom": "5.3",
     "react-scripts": "5.0.1",
+    "react-spinners": "^0.12.0",
     "react-toastify": "^9.0.1",
     "uniqid": "^5.4.0",
     "use-places-autocomplete": "^3.0.0"

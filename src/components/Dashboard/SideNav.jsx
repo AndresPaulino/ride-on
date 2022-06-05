@@ -59,7 +59,7 @@ function SideNav({ viewSettings }) {
       {/* Side Nav */}
       <div
         onChange={handleOpen()} // always display side nav on tablet + desktop
-        className={`z-10 absolute transition-all ease-in delay-200 h-full sm:block border-r-2 drop-shadow-right ${
+        className={`z-10 absolute transition-all ease-in delay-200 h-full sm:block border-r-2 drop-shadow-right bg-white ${
           open ? 'left-0' : '-left-[15rem]'
         }`}
       >

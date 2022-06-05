@@ -23,7 +23,7 @@ function RidesList() {
   }, []);
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white h-full'>
       <SearchRides />
       <div className='flex flex-wrap justify-center'>
         <RideModal />

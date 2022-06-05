@@ -10,7 +10,9 @@ function Rides() {
       <nav className='z-50'>
         <NavigationBar />
       </nav>
-      <RidesList />
+      <div className='h-[90rem]'>
+        <RidesList />
+      </div>
       
       
     </section>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import axios from 'axios';
+import DotLoader from 'react-spinners/DotLoader';
 
 const Context = createContext();
 
@@ -37,7 +38,11 @@ export const StateContext = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <DotLoader size={100} color='#f4a261' />
+      </div>
+    );
   }
 
   if (error) {
