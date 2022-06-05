@@ -85,7 +85,7 @@ function SettingsForm() {
         </div>
       </div>
       {/* Dashboard Container */}
-      <div className='px-14 pt-5 flex align-middle items-start justify-center'>
+      <div className='px-12 pt-5 flex align-middle items-start justify-center w-full'>
         <div className='drop-shadow-all bg-white p-2 my-4 rounded w-full max-w-lg'>
           <h1 className='text-xl font-bold text-primary'>Hey, {user.user_name}</h1>
           <h1 className='text-gray-700'>Welcome to your settings page</h1>
