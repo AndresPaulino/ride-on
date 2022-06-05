@@ -20,7 +20,7 @@ function CardList() {
   ];
 
   return (
-    <section className='py-10 mt-10 bg-[#1f2937]'>
+    <section className='py-10 mt-4 bg-[#1f2937]'>
       <div className='cards flex justify-between flex-col gap-5 md:flex-row'>
         {blogs.map((blog, index) => (
           <Card key={index} blog={blog} />

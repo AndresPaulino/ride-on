@@ -12,7 +12,7 @@ function DashboardMain({ settings, profile }) {
   return (
     <main className='bg-gray-800 w-full h-full sm:pl-[10rem] flex flex-col items-center px-12'>
       {/* Logo */}
-      <div className='flex flex-col w-full sm:justify-start sm:items-start sm:pl-[3.5rem]'>
+      <div className='flex flex-col w-full'>
         <div className='flex justify-center pt-12 rounded'>
           <a
             href='/home'
@@ -23,7 +23,7 @@ function DashboardMain({ settings, profile }) {
         </div>
       </div>
       {/* Dashboard Container */}
-      <div className='pt-5 flex align-middle items-start justify-center w-full max-w-xl'>
+      <div className='pt-5 flex align-middle items-start justify-center w-full max-w-2xl'>
         <div className='drop-shadow-all bg-white p-2 my-4 rounded w-full'>
           <h1 className='text-xl font-bold text-primary'>Hey, {user.user_name}</h1>
           <h1 className='text-gray-700'>Welcome to your dashboard</h1>
