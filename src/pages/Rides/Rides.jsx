@@ -10,7 +10,7 @@ function Rides() {
       <nav className='z-50'>
         <NavigationBar />
       </nav>
-      <div className='h-[90rem] max-w-[90rem] mx-auto'>
+      <div className='h-[90rem] max-w-[90rem] mx-auto border-x-2'>
         <RidesList />
       </div>
       

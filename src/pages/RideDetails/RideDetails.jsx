@@ -22,16 +22,16 @@ function RideDetails(props) {
     fetchData();
   }, [props.match.params.id]);
   return (
-    <>
+    <div className='bg-white'>
       <nav>
         <NavigationBar />
       </nav>
-      <main className='bg-white py-14'>
+      <main className='bg-white py-14 h-[90rem] max-w-[90rem] mx-auto border-x-2'>
         <Details rideDetails={rideDetails} />
         <RideDetailsCommentForm rideDetails={rideDetails} />
         <RideDetailsComments rideDetails={rideDetails} />
       </main>
-    </>
+    </div>
   );
 }
 
