@@ -5,7 +5,6 @@ import CardList from '../../components/CardList';
 import Footer from '../../components/Footer';
 
 function Home() {
-
   const { user, failedAuth } = useStateContext();
 
   if (failedAuth) {
@@ -15,9 +14,11 @@ function Home() {
   return (
     <div>
       <NavigationBar userName={user.user_name} />
-      <HeroBanner />
-      <CardList />
-      <Footer />
+      <div className='max-w-[100rem] mx-auto'>
+        <HeroBanner />
+        <CardList />
+        <Footer />
+      </div>
     </div>
   );
 }

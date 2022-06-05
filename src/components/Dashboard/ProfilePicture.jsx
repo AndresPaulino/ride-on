@@ -1,13 +1,16 @@
 import React from 'react';
 import { useStateContext } from '../../context/StateContext';
-import axios from 'axios';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 function ProfilePicture() {
   const { user } = useStateContext();
 
   const [image, setImage] = useState(user.profile_img);
   const [imageFile, setImageFile] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleImagePreview = (event) => {
     setImageFile(event.target.files[0]);
@@ -36,10 +39,40 @@ function ProfilePicture() {
           profile_img: res.data.secure_url,
         })
         .then((res) => {
-          console.log(res);
+          notifySuccess();
+          setTimeout(() => {
+            window.location = '/settings';
+          }, 2000);
+        })
+        .catch((err) => {
+          notifyError();
         });
     });
   };
+
+  // Error Toast
+  const notifyError = () =>
+    toast.error(error, {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  // Success Toast
+  const notifySuccess = () =>
+    toast.success('Profile picture uploaded', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   return (
     <div className='w-full pb-5 sm:pl-[10rem] flex align-middle justify-center items-center bg-gray-800 px-12 sm:px-0'>
@@ -70,6 +103,19 @@ function ProfilePicture() {
           </button>
         </form>
       </div>
+
+      {/* Toast Values */}
+      <ToastContainer
+        position='top-center'
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

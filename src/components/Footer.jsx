@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className='text-white bg-gray-900 lg:grid lg:grid-cols-5'>
+    <footer className='text-white bg-[#1f2937] lg:grid lg:grid-cols-5'>
       <aside className='hidden lg:relative lg:col-span-2 lg:block'>
         <img
           className='absolute inset-0 object-cover w-full h-full'
@@ -138,8 +138,8 @@ function Footer() {
             This project has been created using React.js, TailwindCSS, MUI, Axios, Node.js, Express, MySQL, JWT, and the
             Google Maps API.
             <br />
-            For more information about me and my other projects, and for the best way to contact me, please visit my website
-            at{' '}
+            For more information about me and my other projects, and for the best way to contact me, please visit my
+            website at{' '}
             <span className='text-quinary hover:text-quinaryDark'>
               <a href='https://www.andrespaulino.com'>www.andrespaulino.com</a>
             </span>
